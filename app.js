@@ -633,31 +633,36 @@ function showView(name) {
 function showPanel(name) {
   // Ferma sempre l'audio chat quando si cambia panel
   stopCurrentAudio();
-  // 1. Nasconde tutti i panel — preserva gli stili inline strutturali di panelChat
+
+  // 1. Nasconde tutti i panel
   [panelSetup, panelChat, panelBook, panelSettings].forEach(el => {
     if (!el) return;
-    // Non rimuovere style su panelChat — ha flex-direction:column;height:100% inline
-    if (el.id !== 'panelChat') el.removeAttribute('style');
+    el.style.display = 'none';
     el.classList.remove('visible');
     el.classList.add('hidden');
   });
+
   // 2. Nasconde empty state
   if (emptyState) {
-    emptyState.removeAttribute('style');
+    emptyState.style.display = 'none';
     emptyState.classList.remove('visible');
     emptyState.classList.add('hidden');
   }
+
   // 3. Attiva solo il panel richiesto
   const panels = { setup: panelSetup, chat: panelChat, book: panelBook, settings: panelSettings };
   const target = panels[name];
   if (target) {
     target.classList.remove('hidden');
     target.classList.add('visible');
-    // panelChat usa flex-direction:column inline — impostiamo solo display
-    if (name === 'chat') target.style.display = 'flex';
-    else if (name === 'book') {
+    if (name === 'chat') {
+      // panelChat: flex column con height 100% — layout garantito
+      target.style.cssText = 'display:flex;flex-direction:column;height:100%;overflow:hidden';
+    } else if (name === 'book') {
       target.style.display = 'flex';
       if (bookVoiceSection) bookVoiceSection.classList.remove('hidden');
+    } else {
+      target.style.display = 'block';
     }
   }
   sidebarSettings?.classList.toggle('active', name === 'settings');

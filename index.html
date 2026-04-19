@@ -164,9 +164,12 @@
     .view{position:absolute;inset:0;transition:opacity 0.4s ease}
     .view.hidden{opacity:0;pointer-events:none}
     .view.visible{opacity:1;pointer-events:all}
-    .panel-screen{position:absolute;inset:0;transition:opacity 0.3s ease;overflow-y:auto}
-    .panel-screen.hidden{opacity:0;pointer-events:none}
+    .panel-screen{position:absolute;inset:0;transition:opacity 0.3s ease}
+    .panel-screen.hidden{opacity:0;pointer-events:none;display:none !important}
     .panel-screen.visible{opacity:1;pointer-events:all}
+    /* panelChat ha il suo layout flex — non sovrascrivere con overflow-y */
+    #panelChat{overflow:hidden !important}
+    #panelSetup, #panelBook, #panelSettings{overflow-y:auto}
 
     #landing-view{overflow-y:auto;overflow-x:hidden;width:100%;max-width:100vw}
     #landing-view::-webkit-scrollbar{width:3px}
