@@ -21,7 +21,7 @@ const sbClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY, {
 
 // ── API ──────────────────────────────────
 // Si adatta automaticamente: localhost in sviluppo, IP reale da altri dispositivi
-const API_BASE        = window.location.origin;
+const API_BASE        = 'https://legacy-backend-wtx4.onrender.com';
 const API_URL         = `${API_BASE}/api/chat`;
 const API_BOOK_URL    = `${API_BASE}/api/generate_book`;
 const API_HISTORY_URL = `${API_BASE}/api/history`;
