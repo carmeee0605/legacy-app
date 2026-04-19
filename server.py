@@ -64,15 +64,20 @@ else:
 # ── Client ufficiali ─────────────────────────────────────────────────────────
 openai_client    = openai.OpenAI(api_key=OPENAI_API_KEY)
 anthropic_client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
-supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
-
-# Client con service_role per operazioni storage (bypass RLS)
+# ── Client Supabase ───────────────────────────────────────────────────────────
+# Il backend usa la service_role key per bypassare RLS su tutte le tabelle.
+# La anon key è riservata al frontend (client-side).
 _service_key = os.getenv("SUPABASE_SERVICE_KEY")
-supabase_storage: Client = (
-    create_client(SUPABASE_URL, _service_key)
-    if _service_key
-    else supabase
-)
+
+if _service_key:
+    print("[Legacy] Supabase: uso service_role key (RLS bypass)")
+    supabase: Client = create_client(SUPABASE_URL, _service_key)
+else:
+    print("[Legacy] ⚠️  SUPABASE_SERVICE_KEY mancante — uso anon key (RLS attivo potrebbe bloccare le query)")
+    supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
+
+# Client storage: usa sempre service_role se disponibile (upload media)
+supabase_storage: Client = supabase
 
 # ── Configurazione TTS OpenAI (fallback) ─────────────────────────────────────
 TTS_MODEL    = "gpt-4o-mini-tts"
@@ -1029,9 +1034,8 @@ async def reset_session(session_id: str = Form(default="test_session")):
     return {"status": "ok"}
 
 
-app.mount("/", StaticFiles(directory=".", html=True), name="static")
-
 # ── Avvio diretto ─────────────────────────────────────────────────────────────
+# StaticFiles rimosso: frontend su Vercel, backend solo API su Render.
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("server:app", host="0.0.0.0", port=8000, reload=True, timeout_keep_alive=120)
