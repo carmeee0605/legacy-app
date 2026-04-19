@@ -2385,6 +2385,7 @@ function handleAudioBase64(base64String, bubbleEl) {
 function buildFormData() {
   const fd = new FormData();
   fd.append('session_id',         SESSION_ID);
+  fd.append('user_id',            USER_ID || '');
   fd.append('protagonist_name',   protagonistName   || userName);
   fd.append('protagonist_gender', protagonistGender || 'Neutro');
   fd.append('biography_tone',     biographyTone     || 'Nostalgico ed Emozionale');

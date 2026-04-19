@@ -150,7 +150,13 @@ BOOK_SYSTEM_PROMPT = (
 app = FastAPI(title="Legacy API")
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "https://legacy-app-tau.vercel.app",
+        "https://legacy-backend-wtx4.onrender.com",
+        "http://localhost:8000",
+        "http://127.0.0.1:8000",
+    ],
+    allow_origin_regex=r"https://.*\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -161,10 +167,12 @@ app.add_middleware(
 #  HELPERS SUPABASE
 # ════════════════════════════════════════
 
-def db_insert_message(session_id: str, role: str, content: str, image_url: str | None = None) -> None:
+def db_insert_message(session_id: str, role: str, content: str, image_url: str | None = None, user_id: str | None = None) -> None:
     payload: dict = {"session_id": session_id, "role": role, "content": content}
     if image_url:
         payload["image_url"] = image_url
+    if user_id:
+        payload["user_id"] = user_id
     result = supabase.table("memories").insert(payload).execute()
     print(f"[Supabase INSERT] role={role!r}, image={'sì' if image_url else 'no'} → {len(result.data)} righe")
 
@@ -663,6 +671,7 @@ async def clone_voice(
 @app.post("/api/chat")
 async def chat_endpoint(
     session_id:          str                  = Form(default="test_session"),
+    user_id:             Optional[str]        = Form(default=None),
     audio:               Optional[UploadFile] = File(default=None),
     text_input:          Optional[str]        = Form(default=None),
     image_file:          Optional[UploadFile] = File(default=None),
@@ -676,7 +685,7 @@ async def chat_endpoint(
     Accetta audio (Whisper STT) o text_input, più un'immagine opzionale.
     TTS: usa ElevenLabs voce clonata se disponibile, altrimenti OpenAI.
     """
-    print(f"[Legacy] /api/chat — session_id: {session_id!r}")
+    print(f"[Legacy] /api/chat — session_id: {session_id!r}, user_id: {user_id!r}")
 
     user_text: str      = ""
     image_url: str|None = None
@@ -752,7 +761,7 @@ async def chat_endpoint(
         user_text = "[Ha condiviso un'immagine]"
 
     # ── Salva messaggio utente ────────────────────────────────────────────────
-    db_insert_message(session_id, "user", user_text, image_url=image_url)
+    db_insert_message(session_id, "user", user_text, image_url=image_url, user_id=user_id)
 
     # ── Storia + Claude ───────────────────────────────────────────────────────
     full_history   = db_load_history_with_images(session_id)
@@ -785,7 +794,7 @@ async def chat_endpoint(
     ai_reply = message.content[0].text.strip()
     print(f"[Legacy] Claude: {ai_reply!r}")
 
-    db_insert_message(session_id, "assistant", ai_reply)
+    db_insert_message(session_id, "assistant", ai_reply, user_id=user_id)
 
     # ── TTS: SEMPRE OpenAI in chat (ElevenLabs riservato all'audiolibro) ───────
     audio_bytes  = tts_openai(ai_reply, voice_setting)
