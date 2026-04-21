@@ -17,8 +17,8 @@
         extend: {
           fontFamily: { display:['Playfair Display','Georgia','serif'], body:['Inter','system-ui','sans-serif'], mono:['"DM Mono"','monospace'] },
           colors: {
-            'void':'#0b0e17','deep':'#0f1220','gold':'#c9a84c','gold-dim':'#a8893d',
-            'amber':'#d4a843','champagne':'#e8d5a3','violet':'#6b4f8a','violet-bright':'#9b7bb5','neon-red':'#cc3355',
+            'void':'#0b0e17','deep':'#0f1220','gold':'#D4B8A8','gold-dim':'#c8b090',
+            'amber':'#D4B8A8','champagne':'#E8D0C8','violet':'#6b4f8a','violet-bright':'#9b7bb5','neon-red':'#cc3355',
           },
           animation: {
             'mic-breathe':'mic-breathe 2s ease-in-out infinite',
@@ -33,7 +33,7 @@
             'modal-in':'modal-in 0.3s cubic-bezier(0.22,1,0.36,1) forwards',
           },
           keyframes: {
-            'mic-breathe':{'0%,100%':{boxShadow:'0 0 12px 2px rgba(201,168,76,0.3)'},'50%':{boxShadow:'0 0 24px 6px rgba(201,168,76,0.55)'}},
+            'mic-breathe':{'0%,100%':{boxShadow:'0 0 12px 2px rgba(212,184,168,0.3)'},'50%':{boxShadow:'0 0 24px 6px rgba(212,184,168,0.55)'}},
             'mic-record':{'0%,100%':{boxShadow:'0 0 20px 4px rgba(255,45,85,0.5)',transform:'scale(1)'},'50%':{boxShadow:'0 0 40px 12px rgba(255,45,85,0.7)',transform:'scale(1.06)'}},
             'ring-expand':{'0%':{transform:'scale(1)',opacity:'0.7'},'100%':{transform:'scale(2)',opacity:'0'}},
             'dot-wave':{'0%,80%,100%':{transform:'translateY(0)',opacity:'0.4'},'40%':{transform:'translateY(-6px)',opacity:'1'}},
@@ -54,13 +54,13 @@
     html,body{height:100%;overflow:hidden;overflow-x:hidden;width:100%;max-width:100%;position:relative}
     body{background:#0b0e17;font-family:'Inter',system-ui,sans-serif;color:rgba(235,228,215,0.88);-webkit-text-size-adjust:100%;text-size-adjust:100%}
 
-    .bg-cosmos{background:radial-gradient(ellipse 80% 60% at 15% 25%,rgba(107,79,138,0.18) 0%,transparent 60%),radial-gradient(ellipse 60% 80% at 85% 75%,rgba(201,168,76,0.08) 0%,transparent 55%),linear-gradient(135deg,#0b0e17 0%,#0f1220 60%,#0c0f1a 100%)}
+    .bg-cosmos{background:radial-gradient(ellipse 80% 60% at 15% 25%,rgba(107,79,138,0.18) 0%,transparent 60%),radial-gradient(ellipse 60% 80% at 85% 75%,rgba(212,184,168,0.08) 0%,transparent 55%),linear-gradient(135deg,#0b0e17 0%,#0f1220 60%,#0c0f1a 100%)}
     .orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0}
     .orb-violet{background:radial-gradient(circle,rgba(107,79,138,0.22) 0%,transparent 70%)}
-    .orb-cyan{background:radial-gradient(circle,rgba(201,168,76,0.14) 0%,transparent 70%)}
+    .orb-cyan{background:radial-gradient(circle,rgba(212,184,168,0.14) 0%,transparent 70%)}
     .orb-pink{background:radial-gradient(circle,rgba(236,72,153,0.15) 0%,transparent 70%)}
-    .scan-line{position:fixed;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,0.1),transparent);animation:scan-line 4s linear infinite;pointer-events:none;z-index:1}
-    .grid-overlay{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.025) 1px,transparent 1px);background-size:50px 50px;pointer-events:none}
+    .scan-line{position:fixed;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(212,184,168,0.1),transparent);animation:scan-line 4s linear infinite;pointer-events:none;z-index:1}
+    .grid-overlay{position:absolute;inset:0;background-image:linear-gradient(rgba(212,184,168,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(212,184,168,0.025) 1px,transparent 1px);background-size:50px 50px;pointer-events:none}
 
     .glass{background:rgba(255,255,255,0.04);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.09)}
     .glass-dark{background:rgba(0,0,0,0.4);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,0.07)}
@@ -68,11 +68,11 @@
 
     .s1{animation-delay:.1s}.s2{animation-delay:.25s}.s3{animation-delay:.45s}.s4{animation-delay:.65s}.s5{animation-delay:.85s}
 
-    .neon-cyan{color:#c9a84c;text-shadow:0 0 18px rgba(201,168,76,0.45),0 0 40px rgba(201,168,76,0.15)}
+    .neon-cyan{color:#D4B8A8;text-shadow:0 0 18px rgba(212,184,168,0.45),0 0 40px rgba(212,184,168,0.15)}
     .neon-violet{color:#9b7bb5;text-shadow:0 0 18px rgba(155,123,181,0.4),0 0 40px rgba(155,123,181,0.15)}
 
-    .btn-neon{background:linear-gradient(135deg,#b8943e,#c9a84c,#a8813a);border:1px solid rgba(201,168,76,0.7);box-shadow:0 2px 20px rgba(201,168,76,0.2),inset 0 1px 0 rgba(255,255,255,0.15);transition:all 0.3s ease;cursor:pointer;color:#0f1220 !important}
-    .btn-neon:hover{background:linear-gradient(135deg,#c9a84c,#dab95a,#b8943e);border-color:rgba(201,168,76,0.9);box-shadow:0 4px 28px rgba(201,168,76,0.35)}
+    .btn-neon{background:linear-gradient(135deg,#c8b898,#D4B8A8,#b8a888);border:1px solid rgba(212,184,168,0.7);box-shadow:0 2px 20px rgba(212,184,168,0.2),inset 0 1px 0 rgba(255,255,255,0.15);transition:all 0.3s ease;cursor:pointer;color:#0f1220 !important}
+    .btn-neon:hover{background:linear-gradient(135deg,#D4B8A8,#ede0c8,#c8b898);border-color:rgba(212,184,168,0.9);box-shadow:0 4px 28px rgba(212,184,168,0.35)}
     .btn-neon:active{transform:scale(0.97)}
     .btn-violet{background:linear-gradient(135deg,rgba(107,79,138,0.25),rgba(85,60,115,0.25));border:1px solid rgba(155,123,181,0.45);transition:all 0.3s ease;cursor:pointer}
     .btn-violet:hover{background:linear-gradient(135deg,rgba(107,79,138,0.4),rgba(85,60,115,0.4));border-color:rgba(155,123,181,0.7)}
@@ -81,66 +81,66 @@
     .btn-ghost:hover{border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.05)}
     .btn-danger{background:rgba(255,45,85,0.08);border:1px solid rgba(255,45,85,0.35);transition:all 0.3s ease;cursor:pointer}
     .btn-danger:hover{background:rgba(255,45,85,0.15);border-color:rgba(255,45,85,0.6)}
-    .btn-generate{background:linear-gradient(135deg,rgba(201,168,76,0.15),rgba(168,130,50,0.15));border:1px solid rgba(201,168,76,0.45);transition:all 0.3s ease;cursor:pointer}
-    .btn-generate:hover{border-color:rgba(201,168,76,0.75);box-shadow:0 0 18px rgba(201,168,76,0.2)}
+    .btn-generate{background:linear-gradient(135deg,rgba(212,184,168,0.15),rgba(168,130,50,0.15));border:1px solid rgba(212,184,168,0.45);transition:all 0.3s ease;cursor:pointer}
+    .btn-generate:hover{border-color:rgba(212,184,168,0.75);box-shadow:0 0 18px rgba(212,184,168,0.2)}
     .btn-read{background:linear-gradient(135deg,rgba(107,79,138,0.18),rgba(85,60,115,0.18));border:1px solid rgba(155,123,181,0.4);transition:all 0.3s ease;cursor:pointer}
     .btn-read:hover{border-color:rgba(155,123,181,0.65);box-shadow:0 0 14px rgba(155,123,181,0.2)}
 
     /* Icona graffetta */
     .btn-attach{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.12);transition:all 0.25s ease;cursor:pointer;flex-shrink:0}
-    .btn-attach:hover{background:rgba(0,245,255,0.08);border-color:rgba(0,245,255,0.35)}
+    .btn-attach:hover{background:rgba(212,184,168,0.08);border-color:rgba(212,184,168,0.35)}
     .btn-attach:active{transform:scale(0.93)}
 
     .input-glass{width:100%;padding:12px 16px;border-radius:12px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);color:rgba(235,228,215,0.9);font-family:'Inter',sans-serif;font-size:0.85rem;transition:all 0.3s ease}
     .input-glass::placeholder{color:rgba(255,255,255,0.2)}
-    .input-glass:focus{outline:none;border-color:rgba(201,168,76,0.5);box-shadow:0 0 0 1px rgba(201,168,76,0.18),0 0 16px rgba(201,168,76,0.07);background:rgba(201,168,76,0.02)}
+    .input-glass:focus{outline:none;border-color:rgba(212,184,168,0.5);box-shadow:0 0 0 1px rgba(212,184,168,0.18),0 0 16px rgba(212,184,168,0.07);background:rgba(212,184,168,0.02)}
 
     .setup-input{width:100%;padding:11px 16px;border-radius:12px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);color:rgba(235,228,215,0.9);font-family:'Inter',sans-serif;font-size:0.82rem;transition:all 0.3s ease;appearance:none;-webkit-appearance:none}
     .setup-input::placeholder{color:rgba(255,255,255,0.2)}
-    .setup-input:focus{outline:none;border-color:rgba(201,168,76,0.5)}
+    .setup-input:focus{outline:none;border-color:rgba(212,184,168,0.5)}
     .setup-select-wrap{position:relative}
-    .setup-select-wrap::after{content:'▾';position:absolute;right:14px;top:50%;transform:translateY(-50%);color:rgba(201,168,76,0.6);font-size:0.75rem;pointer-events:none}
+    .setup-select-wrap::after{content:'▾';position:absolute;right:14px;top:50%;transform:translateY(-50%);color:rgba(212,184,168,0.6);font-size:0.75rem;pointer-events:none}
     select.setup-input option,select.settings-select option{background:#0f1220}
 
     .settings-select{width:100%;padding:10px 16px;border-radius:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);color:rgba(235,228,215,0.88);font-family:'Inter',sans-serif;font-size:0.8rem;transition:all 0.3s ease;appearance:none;-webkit-appearance:none;cursor:pointer}
-    .settings-select:focus{outline:none;border-color:rgba(201,168,76,0.45)}
+    .settings-select:focus{outline:none;border-color:rgba(212,184,168,0.45)}
 
     .toggle-wrap{position:relative;width:44px;height:24px;flex-shrink:0}
     .toggle-wrap input{opacity:0;width:0;height:0;position:absolute}
     .toggle-slider{position:absolute;inset:0;border-radius:99px;cursor:pointer;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);transition:all 0.3s ease}
     .toggle-slider::before{content:'';position:absolute;width:18px;height:18px;border-radius:50%;background:rgba(255,255,255,0.4);top:2px;left:2px;transition:all 0.3s cubic-bezier(0.22,1,0.36,1)}
-    .toggle-wrap input:checked+.toggle-slider{background:rgba(201,168,76,0.25);border-color:rgba(201,168,76,0.55);box-shadow:0 0 10px rgba(201,168,76,0.2)}
-    .toggle-wrap input:checked+.toggle-slider::before{transform:translateX(20px);background:#c9a84c;box-shadow:0 0 8px rgba(201,168,76,0.5)}
+    .toggle-wrap input:checked+.toggle-slider{background:rgba(212,184,168,0.25);border-color:rgba(212,184,168,0.55);box-shadow:0 0 10px rgba(212,184,168,0.2)}
+    .toggle-wrap input:checked+.toggle-slider::before{transform:translateX(20px);background:#D4B8A8;box-shadow:0 0 8px rgba(212,184,168,0.5)}
 
     .gender-pill{flex:1;padding:9px 4px;text-align:center;border-radius:10px;font-family:'Inter',sans-serif;font-size:0.72rem;letter-spacing:0.08em;cursor:pointer;transition:all 0.25s ease;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.4);user-select:none}
-    .gender-pill:hover{border-color:rgba(201,168,76,0.35);color:rgba(235,228,215,0.75)}
-    .gender-pill.active{background:rgba(201,168,76,0.14);border-color:rgba(201,168,76,0.55);color:rgba(201,168,76,0.95);box-shadow:0 0 12px rgba(201,168,76,0.15)}
+    .gender-pill:hover{border-color:rgba(212,184,168,0.35);color:rgba(235,228,215,0.75)}
+    .gender-pill.active{background:rgba(212,184,168,0.14);border-color:rgba(212,184,168,0.55);color:rgba(212,184,168,0.95);box-shadow:0 0 12px rgba(212,184,168,0.15)}
 
     .form-error{font-family:'Inter',sans-serif;font-size:0.72rem;color:rgba(255,45,85,0.9);min-height:18px;letter-spacing:0.04em;text-align:center}
-    .auth-spinner{width:16px;height:16px;border:2px solid rgba(201,168,76,0.2);border-top-color:rgba(201,168,76,0.9);border-radius:50%;animation:spin 0.7s linear infinite}
+    .auth-spinner{width:16px;height:16px;border:2px solid rgba(212,184,168,0.2);border-top-color:rgba(212,184,168,0.9);border-radius:50%;animation:spin 0.7s linear infinite}
     @keyframes spin{to{transform:rotate(360deg)}}
 
     .mic-idle{animation:mic-breathe 2s ease-in-out infinite}
     .mic-active{animation:mic-record 1s ease-in-out infinite}
 
     #chatArea::-webkit-scrollbar,#bookContent::-webkit-scrollbar,#storiesList::-webkit-scrollbar{width:2px}
-    #chatArea::-webkit-scrollbar-thumb{background:rgba(201,168,76,0.3);border-radius:99px}
+    #chatArea::-webkit-scrollbar-thumb{background:rgba(212,184,168,0.3);border-radius:99px}
     #bookContent::-webkit-scrollbar-thumb{background:rgba(124,58,237,0.4);border-radius:99px}
     #storiesList::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.1);border-radius:99px}
 
     .dot-1{animation:dot-wave 1.4s ease-in-out infinite}.dot-2{animation:dot-wave 1.4s ease-in-out 0.2s infinite}.dot-3{animation:dot-wave 1.4s ease-in-out 0.4s infinite}
     .bubble-enter{animation:fade-in 0.35s ease both}
 
-    #bookContent h1{font-family:'Playfair Display',Georgia,serif;font-size:1.3rem;font-weight:700;color:#c9a84c;text-shadow:0 0 18px rgba(201,168,76,0.35);margin-bottom:1.2rem;letter-spacing:0.04em;line-height:1.3}
+    #bookContent h1{font-family:'Playfair Display',Georgia,serif;font-size:1.3rem;font-weight:700;color:#D4B8A8;text-shadow:0 0 18px rgba(212,184,168,0.35);margin-bottom:1.2rem;letter-spacing:0.04em;line-height:1.3}
     #bookContent h2{font-family:'Playfair Display',Georgia,serif;font-size:1.05rem;font-weight:600;color:#9b7bb5;margin:1.4rem 0 0.8rem;letter-spacing:0.03em}
     #bookContent p{font-family:'Inter',system-ui,sans-serif;font-size:0.82rem;font-weight:400;line-height:1.85;color:rgba(225,215,195,0.82);margin-bottom:1rem}
-    #bookContent p:first-of-type::first-letter{font-size:2.8rem;font-weight:800;line-height:0.8;float:left;margin-right:6px;margin-top:4px;color:#c9a84c;text-shadow:0 0 18px rgba(201,168,76,0.6)}
+    #bookContent p:first-of-type::first-letter{font-size:2.8rem;font-weight:800;line-height:0.8;float:left;margin-right:6px;margin-top:4px;color:#D4B8A8;text-shadow:0 0 18px rgba(212,184,168,0.6)}
     #bookContent figure{margin:1.2rem 0;text-align:center}
-    #bookContent figure img{max-width:100%;border-radius:12px;border:1px solid rgba(201,168,76,0.2);box-shadow:0 0 16px rgba(201,168,76,0.07)}
+    #bookContent figure img{max-width:100%;border-radius:12px;border:1px solid rgba(212,184,168,0.2);box-shadow:0 0 16px rgba(212,184,168,0.07)}
     #bookContent figcaption{font-family:'Inter',sans-serif;font-size:0.7rem;color:rgba(155,123,181,0.75);margin-top:6px}
 
     #writingOverlay{background:rgba(11,14,23,0.95);backdrop-filter:blur(30px)}
-    .data-line{height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,0.6),rgba(107,79,138,0.5),transparent);animation:data-line-anim 2s ease-in-out infinite}
+    .data-line{height:1px;background:linear-gradient(90deg,transparent,rgba(212,184,168,0.6),rgba(107,79,138,0.5),transparent);animation:data-line-anim 2s ease-in-out infinite}
     @keyframes data-line-anim{0%,100%{opacity:0.3;transform:scaleX(0.5)}50%{opacity:1;transform:scaleX(1)}}
 
     /* Sidebar */
@@ -148,14 +148,14 @@
     @media(max-width:768px){#sidebar{position:fixed;top:0;left:0;height:100%;z-index:1000;transform:translateX(-100%);width:85vw;max-width:300px}#sidebar.open{transform:translateX(0)}}
     .sidebar-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:10px;font-size:0.82rem;font-family:'Inter',sans-serif;color:rgba(220,210,195,0.5);cursor:pointer;transition:all 0.2s ease;border:1px solid transparent}
     .sidebar-item:hover{background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.8);border-color:rgba(255,255,255,0.08)}
-    .sidebar-item.active{background:rgba(201,168,76,0.1);color:rgba(201,168,76,0.95);border-color:rgba(201,168,76,0.25)}
+    .sidebar-item.active{background:rgba(212,184,168,0.1);color:rgba(212,184,168,0.95);border-color:rgba(212,184,168,0.25)}
     .story-item{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;font-size:0.73rem;font-family:'Inter',sans-serif;color:rgba(220,210,195,0.38);cursor:pointer;transition:all 0.2s ease;border:1px solid transparent}
     .story-item:hover{background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.65);border-color:rgba(255,255,255,0.06)}
-    .story-item.active{background:rgba(201,168,76,0.08);color:rgba(201,168,76,0.85);border-color:rgba(201,168,76,0.2)}
+    .story-item.active{background:rgba(212,184,168,0.08);color:rgba(212,184,168,0.85);border-color:rgba(212,184,168,0.2)}
     .btn-rename{display:flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:5px;border:none;background:transparent;cursor:pointer;opacity:0;transition:all 0.2s ease;flex-shrink:0}
     .story-item:hover .btn-rename{opacity:1}
-    .btn-rename:hover{background:rgba(201,168,76,0.1)}
-    .btn-rename:hover svg{stroke:rgba(201,168,76,0.85)}
+    .btn-rename:hover{background:rgba(212,184,168,0.1)}
+    .btn-rename:hover svg{stroke:rgba(212,184,168,0.85)}
     .btn-trash{display:flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:5px;border:none;background:transparent;cursor:pointer;opacity:0;transition:all 0.2s ease;flex-shrink:0;margin-left:auto}
     .story-item:hover .btn-trash{opacity:1}
     .btn-trash:hover{background:rgba(255,45,85,0.15)}
@@ -173,19 +173,19 @@
 
     #landing-view{overflow-y:auto;overflow-x:hidden;width:100%;max-width:100vw}
     #landing-view::-webkit-scrollbar{width:3px}
-    #landing-view::-webkit-scrollbar-thumb{background:rgba(0,245,255,0.2);border-radius:99px}
+    #landing-view::-webkit-scrollbar-thumb{background:rgba(212,184,168,0.2);border-radius:99px}
 
     /* Landing */
     .hero-title{font-family:'Syne',sans-serif;font-size:clamp(2.4rem,6vw,5rem);font-weight:800;line-height:1.05;letter-spacing:-0.02em}
-    .hero-gradient-text{background:linear-gradient(135deg,#00f5ff 0%,#a855f7 50%,#00f5ff 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gradient-shift 4s linear infinite}
+    .hero-gradient-text{background:linear-gradient(135deg,#D4B8A8 0%,#9b7bb5 50%,#D4B8A8 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gradient-shift 4s linear infinite}
     @keyframes gradient-shift{0%{background-position:0% center}100%{background-position:200% center}}
     .feature-card{transition:all 0.35s ease}
-    .feature-card:hover{transform:translateY(-4px);border-color:rgba(0,245,255,0.25)!important}
+    .feature-card:hover{transform:translateY(-4px);border-color:rgba(212,184,168,0.25)!important}
     .star{color:#C9A96E;font-size:0.75rem}
 
     /* Settings */
-    .settings-section-title{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(0,245,255,0.45);margin-bottom:12px;display:flex;align-items:center;gap:8px}
-    .settings-section-title::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(0,245,255,0.2),transparent)}
+    .settings-section-title{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(212,184,168,0.45);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+    .settings-section-title::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(212,184,168,0.2),transparent)}
     .settings-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;border-radius:12px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);transition:border-color 0.2s}
     .settings-row:hover{border-color:rgba(255,255,255,0.12)}
     .settings-row-label{font-family:'DM Mono',monospace;font-size:0.8rem;color:rgba(255,255,255,0.7)}
@@ -203,8 +203,8 @@
       gap:8px;
       padding:8px 12px;
       margin-bottom:6px;
-      background:rgba(0,245,255,0.05);
-      border:1px solid rgba(0,245,255,0.2);
+      background:rgba(212,184,168,0.05);
+      border:1px solid rgba(212,184,168,0.2);
       border-radius:12px;
       animation:fade-in 0.25s ease both;
     }
@@ -213,13 +213,13 @@
       width:44px; height:44px;
       border-radius:8px;
       object-fit:cover;
-      border:1px solid rgba(0,245,255,0.3);
+      border:1px solid rgba(212,184,168,0.3);
       flex-shrink:0;
     }
     #imagePreviewName{
       font-family:'DM Mono',monospace;
       font-size:0.7rem;
-      color:rgba(0,245,255,0.7);
+      color:rgba(212,184,168,0.7);
       flex:1;
       overflow:hidden;
       text-overflow:ellipsis;
@@ -237,36 +237,36 @@
     .chat-image{
       max-width:100%;
       border-radius:10px;
-      border:1px solid rgba(0,245,255,0.2);
-      box-shadow:0 0 16px rgba(0,245,255,0.06);
+      border:1px solid rgba(212,184,168,0.2);
+      box-shadow:0 0 16px rgba(212,184,168,0.06);
       margin-bottom:6px;
       display:block;
     }
 
     /* ── Voice cloning ── */
     .voice-upload-zone {
-      border: 1.5px dashed rgba(168,85,247,0.35);
+      border: 1.5px dashed rgba(155,123,181,0.35);
       border-radius: 12px;
       padding: 16px;
-      background: rgba(168,85,247,0.04);
+      background: rgba(155,123,181,0.04);
       transition: all 0.3s ease;
       cursor: pointer;
       text-align: center;
     }
     .voice-upload-zone:hover,
     .voice-upload-zone.dragover {
-      border-color: rgba(168,85,247,0.65);
-      background: rgba(168,85,247,0.09);
+      border-color: rgba(155,123,181,0.65);
+      background: rgba(155,123,181,0.09);
     }
     .voice-upload-zone.has-file {
-      border-color: rgba(0,245,255,0.45);
-      background: rgba(0,245,255,0.05);
+      border-color: rgba(212,184,168,0.45);
+      background: rgba(212,184,168,0.05);
       border-style: solid;
     }
     .clone-spinner {
       width: 16px; height: 16px;
-      border: 2px solid rgba(168,85,247,0.2);
-      border-top-color: rgba(168,85,247,0.9);
+      border: 2px solid rgba(155,123,181,0.2);
+      border-top-color: rgba(155,123,181,0.9);
       border-radius: 50%;
       animation: spin 0.7s linear infinite;
     }
@@ -274,10 +274,10 @@
     .voice-cloned-badge {
       display: inline-flex; align-items: center; gap: 5px;
       padding: 4px 10px; border-radius: 99px;
-      background: rgba(0,245,255,0.08);
-      border: 1px solid rgba(0,245,255,0.3);
+      background: rgba(212,184,168,0.08);
+      border: 1px solid rgba(212,184,168,0.3);
       font-family: 'DM Mono', monospace; font-size: 0.68rem;
-      letter-spacing: 0.1em; color: rgba(0,245,255,0.85);
+      letter-spacing: 0.1em; color: rgba(212,184,168,0.85);
     }
 
 
@@ -305,13 +305,13 @@
     .path-card:hover::before { opacity: 1; }
     .path-card:active { transform: translateY(0); }
 
-    .path-card.path-personal::before  { background: radial-gradient(ellipse at 50% 0%, rgba(0,245,255,0.12), transparent 70%); }
+    .path-card.path-personal::before  { background: radial-gradient(ellipse at 50% 0%, rgba(212,184,168,0.12), transparent 70%); }
     .path-card.path-couple::before    { background: radial-gradient(ellipse at 50% 0%, rgba(255,100,150,0.14), transparent 70%); }
-    .path-card.path-family::before    { background: radial-gradient(ellipse at 50% 0%, rgba(168,85,247,0.14), transparent 70%); }
+    .path-card.path-family::before    { background: radial-gradient(ellipse at 50% 0%, rgba(155,123,181,0.14), transparent 70%); }
 
-    .path-card:hover.path-personal  { border-color: rgba(0,245,255,0.35);  box-shadow: 0 8px 32px rgba(0,245,255,0.08); }
+    .path-card:hover.path-personal  { border-color: rgba(212,184,168,0.35);  box-shadow: 0 8px 32px rgba(212,184,168,0.08); }
     .path-card:hover.path-couple    { border-color: rgba(255,100,150,0.35); box-shadow: 0 8px 32px rgba(255,100,150,0.08); }
-    .path-card:hover.path-family    { border-color: rgba(168,85,247,0.35); box-shadow: 0 8px 32px rgba(168,85,247,0.08); }
+    .path-card:hover.path-family    { border-color: rgba(155,123,181,0.35); box-shadow: 0 8px 32px rgba(155,123,181,0.08); }
 
     .path-card-icon {
       width: 44px; height: 44px;
@@ -319,15 +319,15 @@
       margin: 0 auto 12px;
       display: flex; align-items: center; justify-content: center;
     }
-    .path-personal .path-card-icon { background: rgba(0,245,255,0.1);    border: 1px solid rgba(0,245,255,0.2); }
+    .path-personal .path-card-icon { background: rgba(212,184,168,0.1);    border: 1px solid rgba(212,184,168,0.2); }
     .path-couple   .path-card-icon { background: rgba(255,100,150,0.1);  border: 1px solid rgba(255,100,150,0.2); }
-    .path-family   .path-card-icon { background: rgba(168,85,247,0.1);   border: 1px solid rgba(168,85,247,0.2); }
+    .path-family   .path-card-icon { background: rgba(155,123,181,0.1);   border: 1px solid rgba(155,123,181,0.2); }
 
     .path-card-title   { font-family: 'Syne', sans-serif; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.04em; margin-bottom: 5px; }
     .path-card-sub     { font-family: 'DM Mono', monospace; font-size: 0.68rem; line-height: 1.5; }
-    .path-personal .path-card-title { color: rgba(0,245,255,0.9); }
+    .path-personal .path-card-title { color: rgba(212,184,168,0.9); }
     .path-couple   .path-card-title { color: rgba(255,120,160,0.9); }
-    .path-family   .path-card-title { color: rgba(168,85,247,0.9); }
+    .path-family   .path-card-title { color: rgba(155,123,181,0.9); }
     .path-card-sub { color: rgba(200,210,255,0.4); }
 
     /* ── Audiolibro player ── */
@@ -337,16 +337,16 @@
       gap: 8px;
       padding: 8px 12px;
       border-radius: 10px;
-      background: rgba(0,245,255,0.06);
-      border: 1px solid rgba(0,245,255,0.2);
+      background: rgba(212,184,168,0.06);
+      border: 1px solid rgba(212,184,168,0.2);
       margin-top: 6px;
       flex-wrap: wrap;
     }
     #audiobookPlayer.visible { display: flex; }
     .audiobook-spinner {
       width: 14px; height: 14px;
-      border: 2px solid rgba(0,245,255,0.2);
-      border-top-color: rgba(0,245,255,0.9);
+      border: 2px solid rgba(212,184,168,0.2);
+      border-top-color: rgba(212,184,168,0.9);
       border-radius: 50%;
       animation: spin 0.7s linear infinite;
       flex-shrink: 0;
@@ -356,8 +356,8 @@
     /* Icona microfono voce clonata in sidebar */
     .voice-dot {
       width: 7px; height: 7px; border-radius: 50%;
-      background: rgba(168,85,247,0.9);
-      box-shadow: 0 0 6px rgba(168,85,247,0.7);
+      background: rgba(155,123,181,0.9);
+      box-shadow: 0 0 6px rgba(155,123,181,0.7);
       flex-shrink: 0;
     }
     /* ── Landing page sales ── */
@@ -365,15 +365,15 @@
     @media(max-width:640px){ .landing-section{ padding:56px 20px; } }
 
     .step-connector { position:absolute; top:20px; left:calc(50% + 28px); right:calc(-50% + 28px); height:1px;
-      background:linear-gradient(90deg, rgba(0,245,255,0.3), rgba(168,85,247,0.3)); }
+      background:linear-gradient(90deg, rgba(212,184,168,0.3), rgba(155,123,181,0.3)); }
     @media(max-width:640px){ .step-connector{ display:none; } }
 
     .target-card { transition: all 0.35s ease; position: relative; overflow: hidden; }
     .target-card::before { content:''; position:absolute; inset:0; border-radius:inherit;
-      background:linear-gradient(135deg, rgba(0,245,255,0.04), transparent 60%);
+      background:linear-gradient(135deg, rgba(212,184,168,0.04), transparent 60%);
       opacity:0; transition:opacity 0.3s ease; pointer-events:none; }
     .target-card:hover::before { opacity:1; }
-    .target-card:hover { transform:translateY(-5px); box-shadow:0 24px 60px rgba(0,0,0,0.35), 0 0 0 1px rgba(0,245,255,0.15); }
+    .target-card:hover { transform:translateY(-5px); box-shadow:0 24px 60px rgba(0,0,0,0.35), 0 0 0 1px rgba(212,184,168,0.15); }
 
     .review-card { transition: all 0.3s ease; }
     .review-card:hover { transform:translateY(-3px); }
@@ -393,13 +393,13 @@
     .gradient-title { background:linear-gradient(135deg, #ffffff 0%, rgba(200,210,255,0.9) 100%);
       -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
 
-    .cta-glow { box-shadow: 0 0 0 1px rgba(0,245,255,0.3), 0 0 40px rgba(0,245,255,0.18), 0 8px 32px rgba(0,0,0,0.4); }
-    .cta-glow:hover { box-shadow: 0 0 0 1px rgba(0,245,255,0.6), 0 0 60px rgba(0,245,255,0.3), 0 8px 40px rgba(0,0,0,0.5); }
+    .cta-glow { box-shadow: 0 0 0 1px rgba(212,184,168,0.3), 0 0 40px rgba(212,184,168,0.18), 0 8px 32px rgba(0,0,0,0.4); }
+    .cta-glow:hover { box-shadow: 0 0 0 1px rgba(212,184,168,0.6), 0 0 60px rgba(212,184,168,0.3), 0 8px 40px rgba(0,0,0,0.5); }
 
     /* ── Sezione Scopri la Magia ── */
     .magic-player {
       background: rgba(0,0,0,0.35);
-      border: 1px solid rgba(0,245,255,0.18);
+      border: 1px solid rgba(212,184,168,0.18);
       border-radius: 20px;
       padding: 24px;
       position: relative;
@@ -409,7 +409,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,245,255,0.07) 0%, transparent 70%);
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(212,184,168,0.07) 0%, transparent 70%);
       pointer-events: none;
     }
     .magic-waveform {
@@ -422,7 +422,7 @@
       display: inline-block;
       width: 3px;
       border-radius: 99px;
-      background: rgba(0,245,255,0.35);
+      background: rgba(212,184,168,0.35);
       animation: wave-idle 1.4s ease-in-out infinite;
       transform-origin: bottom;
     }
@@ -449,7 +449,7 @@
       50%      { transform: scaleY(1.0); opacity:0.9; }
     }
     .magic-waveform.playing span {
-      background: rgba(0,245,255,0.75);
+      background: rgba(212,184,168,0.75);
       animation: wave-play 0.8s ease-in-out infinite;
     }
     @keyframes wave-play {
@@ -458,7 +458,7 @@
     }
     .magic-progress-track {
       height: 3px;
-      background: rgba(0,245,255,0.12);
+      background: rgba(212,184,168,0.12);
       border-radius: 99px;
       overflow: hidden;
       cursor: pointer;
@@ -466,7 +466,7 @@
     .magic-progress-fill {
       height: 100%;
       width: 0%;
-      background: linear-gradient(90deg, rgba(0,245,255,0.8), rgba(124,58,237,0.8));
+      background: linear-gradient(90deg, rgba(212,184,168,0.8), rgba(124,58,237,0.8));
       border-radius: 99px;
       transition: width 0.3s linear;
     }
@@ -476,19 +476,19 @@
       border: none;
       cursor: pointer;
       display: flex; align-items: center; justify-content: center;
-      background: rgba(0,245,255,0.12);
-      border: 1px solid rgba(0,245,255,0.35);
+      background: rgba(212,184,168,0.12);
+      border: 1px solid rgba(212,184,168,0.35);
       transition: all 0.2s ease;
       flex-shrink: 0;
     }
     .magic-play-btn:hover {
-      background: rgba(0,245,255,0.22);
-      box-shadow: 0 0 20px rgba(0,245,255,0.25);
+      background: rgba(212,184,168,0.22);
+      box-shadow: 0 0 20px rgba(212,184,168,0.25);
       transform: scale(1.05);
     }
     .magic-book-mock {
       background: rgba(0,0,0,0.3);
-      border: 1px solid rgba(168,85,247,0.2);
+      border: 1px solid rgba(155,123,181,0.2);
       border-radius: 20px;
       padding: 24px;
       position: relative;
@@ -503,7 +503,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(168,85,247,0.07) 0%, transparent 70%);
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(155,123,181,0.07) 0%, transparent 70%);
       pointer-events: none;
     }
     .book-pages {
@@ -514,27 +514,27 @@
     .book-page {
       position: absolute;
       border-radius: 3px 10px 10px 3px;
-      border: 1px solid rgba(168,85,247,0.25);
+      border: 1px solid rgba(155,123,181,0.25);
     }
     .book-page-3 {
       width: 78px; height: 102px;
-      background: rgba(168,85,247,0.04);
+      background: rgba(155,123,181,0.04);
       top: 4px; left: 8px;
     }
     .book-page-2 {
       width: 80px; height: 104px;
-      background: rgba(168,85,247,0.06);
+      background: rgba(155,123,181,0.06);
       top: 3px; left: 5px;
     }
     .book-page-1 {
       width: 82px; height: 106px;
-      background: linear-gradient(160deg, rgba(168,85,247,0.12), rgba(0,0,0,0.3));
+      background: linear-gradient(160deg, rgba(155,123,181,0.12), rgba(0,0,0,0.3));
       top: 0; left: 0;
-      border-color: rgba(168,85,247,0.4);
+      border-color: rgba(155,123,181,0.4);
     }
     .book-line {
       height: 2px;
-      background: rgba(168,85,247,0.2);
+      background: rgba(155,123,181,0.2);
       border-radius: 99px;
       margin: 6px 10px 0;
     }
@@ -545,7 +545,7 @@
     .book-line:nth-child(6) { width: 55%; }
     .book-line.title-line {
       height: 3px;
-      background: rgba(168,85,247,0.5);
+      background: rgba(155,123,181,0.5);
       width: 70%;
       margin: 12px 10px 2px;
     }
@@ -568,10 +568,10 @@
     .ai-md ul  { list-style:disc; padding-left:1.2rem; margin-bottom:0.55rem; }
     .ai-md ol  { list-style:decimal; padding-left:1.2rem; margin-bottom:0.55rem; }
     .ai-md li  { margin-bottom:0.2rem; line-height:1.6; }
-    .ai-md strong { color:rgba(0,245,255,0.85); font-weight:600; }
+    .ai-md strong { color:rgba(212,184,168,0.85); font-weight:600; }
     .ai-md em  { color:rgba(200,210,255,0.75); font-style:italic; }
-    .ai-md code { font-family:'DM Mono',monospace; background:rgba(0,245,255,0.07);
-      padding:1px 5px; border-radius:4px; font-size:0.8em; color:rgba(0,245,255,0.8); }
+    .ai-md code { font-family:'DM Mono',monospace; background:rgba(212,184,168,0.07);
+      padding:1px 5px; border-radius:4px; font-size:0.8em; color:rgba(212,184,168,0.8); }
 
     /* ── Action bar sotto fumetto AI ── */
     .ai-action-bar { display:flex; align-items:center; gap:6px; margin-top:5px; padding-left:2px; }
@@ -583,7 +583,7 @@
       transition:all 0.2s ease;
     }
     .ai-action-btn:hover { color:rgba(255,255,255,0.65); background:rgba(255,255,255,0.05); }
-    .ai-action-btn.copied { color:rgba(0,245,255,0.75); }
+    .ai-action-btn.copied { color:rgba(212,184,168,0.75); }
 
     /* ── Social Login ── */
     .btn-google {
@@ -660,9 +660,9 @@
       box-shadow: 0 0 30px rgba(255,200,50,0.08);
     }
     .plan-card.highlighted-ultra {
-      border-color: rgba(168,85,247,0.5);
-      background: rgba(168,85,247,0.05);
-      box-shadow: 0 0 30px rgba(168,85,247,0.1);
+      border-color: rgba(155,123,181,0.5);
+      background: rgba(155,123,181,0.05);
+      box-shadow: 0 0 30px rgba(155,123,181,0.1);
     }
     .plan-badge {
       position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
@@ -670,7 +670,7 @@
       font-family: 'DM Mono', monospace; letter-spacing: 0.15em; text-transform: uppercase;
     }
     .plan-feat { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: rgba(200,210,255,0.45); margin-bottom: 4px; }
-    .plan-feat.ok { color: rgba(0,245,255,0.7); }
+    .plan-feat.ok { color: rgba(212,184,168,0.7); }
     .plan-feat.ok::before { content: '✓  '; }
     .plan-feat.no { color: rgba(255,255,255,0.2); }
     .plan-feat.no::before { content: '✕  '; }
@@ -686,10 +686,10 @@
     }
     .plan-cta-gold:hover { background: linear-gradient(135deg, rgba(255,200,50,0.4), rgba(200,150,20,0.3)); }
     .plan-cta-ultra {
-      background: linear-gradient(135deg, rgba(168,85,247,0.25), rgba(124,58,237,0.2));
-      border: 1px solid rgba(168,85,247,0.55); color: rgba(168,85,247,0.95);
+      background: linear-gradient(135deg, rgba(155,123,181,0.25), rgba(107,79,138,0.2));
+      border: 1px solid rgba(155,123,181,0.55); color: rgba(155,123,181,0.95);
     }
-    .plan-cta-ultra:hover { background: linear-gradient(135deg, rgba(168,85,247,0.4), rgba(124,58,237,0.3)); }
+    .plan-cta-ultra:hover { background: linear-gradient(135deg, rgba(155,123,181,0.4), rgba(124,58,237,0.3)); }
     .plan-cta-ghost {
       background: transparent; border: 1px solid rgba(255,255,255,0.1);
       color: rgba(255,255,255,0.3);
@@ -704,22 +704,22 @@
       transition: border-color 0.2s;
     }
     .legal-check-row:has(input:checked) {
-      border-color: rgba(0,245,255,0.25);
-      background: rgba(0,245,255,0.03);
+      border-color: rgba(212,184,168,0.25);
+      background: rgba(212,184,168,0.03);
     }
     .legal-check-row input[type="checkbox"] {
       width: 16px; height: 16px; flex-shrink: 0; margin-top: 1px;
-      accent-color: #00f5ff; cursor: pointer;
+      accent-color: #D4B8A8; cursor: pointer;
     }
     .legal-check-row label {
       font-family: 'DM Mono', monospace; font-size: 0.68rem;
       line-height: 1.5; color: rgba(255,255,255,0.45); cursor: pointer;
     }
     .legal-check-row label a {
-      color: rgba(0,245,255,0.7); text-decoration: underline;
-      text-decoration-color: rgba(0,245,255,0.3);
+      color: rgba(212,184,168,0.7); text-decoration: underline;
+      text-decoration-color: rgba(212,184,168,0.3);
     }
-    .legal-check-row label a:hover { color: rgba(0,245,255,0.95); }
+    .legal-check-row label a:hover { color: rgba(212,184,168,0.95); }
     /* Legal modal overlay */
     .legal-modal-backdrop {
       position: fixed; inset: 0;
@@ -731,7 +731,7 @@
     .legal-modal-box {
       width: 100%; max-width: 560px; max-height: 80vh;
       margin: 16px; background: rgba(8,13,26,0.98);
-      border: 1px solid rgba(0,245,255,0.15);
+      border: 1px solid rgba(212,184,168,0.15);
       border-radius: 20px; display: flex; flex-direction: column;
       animation: modal-in 0.3s cubic-bezier(0.22,1,0.36,1) forwards;
     }
@@ -747,7 +747,7 @@
     }
     .legal-modal-body h3 {
       font-family: 'Syne', sans-serif; font-size: 0.9rem; font-weight: 700;
-      color: rgba(0,245,255,0.8); margin: 16px 0 6px;
+      color: rgba(212,184,168,0.8); margin: 16px 0 6px;
     }
     .legal-modal-body h3:first-child { margin-top: 0; }
     .legal-modal-body p { margin-bottom: 10px; }
@@ -1059,10 +1059,10 @@
 
         <!-- ULTRA -->
         <div class="plan-card" id="planUltra">
-          <div class="plan-badge" style="background:rgba(168,85,247,0.15);border:1px solid rgba(168,85,247,0.4);color:rgba(168,85,247,0.9)">Completo</div>
-          <div class="font-mono text-[9px] tracking-[0.25em] uppercase mb-3" style="color:rgba(168,85,247,0.7)">Ultra</div>
-          <div class="font-display text-2xl font-800 mb-1" style="color:rgba(168,85,247,0.9)">€19</div>
-          <div class="font-mono text-[9px] mb-4" style="color:rgba(168,85,247,0.4)">/mese</div>
+          <div class="plan-badge" style="background:rgba(155,123,181,0.15);border:1px solid rgba(155,123,181,0.4);color:rgba(155,123,181,0.9)">Completo</div>
+          <div class="font-mono text-[9px] tracking-[0.25em] uppercase mb-3" style="color:rgba(155,123,181,0.7)">Ultra</div>
+          <div class="font-display text-2xl font-800 mb-1" style="color:rgba(155,123,181,0.9)">€19</div>
+          <div class="font-mono text-[9px] mb-4" style="color:rgba(155,123,181,0.4)">/mese</div>
           <div class="plan-feat ok">Storie illimitate</div>
           <div class="plan-feat ok">Chat illimitata</div>
           <div class="plan-feat ok">Genera libro PDF</div>
@@ -1084,7 +1084,7 @@
 
   <!-- ══ TERMS GATE MODAL (post-login) ══ -->
   <div id="termsGateModal" class="legal-modal-backdrop" style="z-index:500">
-    <div class="legal-modal-box" style="border-color:rgba(0,245,255,0.2);max-width:480px">
+    <div class="legal-modal-box" style="border-color:rgba(212,184,168,0.2);max-width:480px">
       <div class="legal-modal-header">
         <div>
           <h2 class="font-display text-base font-700 neon-cyan">Benvenuto su Legacy ✦</h2>
@@ -1168,7 +1168,7 @@
 
         <h3>Art. 10 – Legge Applicabile e Foro Competente</h3>
         <p>I presenti Termini sono regolati dalla legge italiana. Per qualsiasi controversia è competente in via esclusiva il Foro di Milano, salvo diversa disposizione inderogabile di legge a tutela del consumatore.</p>
-        <p style="margin-top:20px;color:rgba(0,245,255,0.5)">Contatto: support@legacy.app</p>
+        <p style="margin-top:20px;color:rgba(212,184,168,0.5)">Contatto: support@legacy.app</p>
       </div>
     </div>
   </div>
@@ -1184,7 +1184,7 @@
       </div>
       <div class="legal-modal-body">
         <p><strong style="color:rgba(255,255,255,0.7)">Informativa ai sensi degli artt. 13-14 GDPR (Reg. UE 2016/679) — Ultimo aggiornamento: Aprile 2026</strong></p>
-        <p><strong style="color:rgba(0,245,255,0.7)">Titolare del Trattamento:</strong> Legacy · support@legacy.app</p>
+        <p><strong style="color:rgba(212,184,168,0.7)">Titolare del Trattamento:</strong> Legacy · support@legacy.app</p>
 
         <h3>1. Tipologie di Dati Trattati</h3>
         <p><strong style="color:rgba(255,255,255,0.7)">Dati comuni:</strong> indirizzo email e password (in forma criptata); testi, memorie e narrazioni personali; fotografie e immagini; dati di utilizzo e log tecnici anonimi.</p>
@@ -1206,9 +1206,9 @@
         <p>I dati non vengono ceduti, venduti o comunicati a terzi per scopi di marketing o profilazione pubblicitaria.</p>
 
         <h3>5. Diritto all'Oblio e Diritti dell'Interessato</h3>
-        <p><strong style="color:rgba(0,245,255,0.75)">Diritto all'Oblio (art. 17 GDPR):</strong> L'Utente può richiedere la cancellazione totale e irreversibile di tutti i propri dati personali, inclusi contenuti, biografie generate e dati vocali. La richiesta viene evasa entro 30 giorni. La cancellazione dell'account comporta automaticamente la cancellazione di tutti i dati associati, fatti salvi gli obblighi di conservazione legale.</p>
+        <p><strong style="color:rgba(212,184,168,0.75)">Diritto all'Oblio (art. 17 GDPR):</strong> L'Utente può richiedere la cancellazione totale e irreversibile di tutti i propri dati personali, inclusi contenuti, biografie generate e dati vocali. La richiesta viene evasa entro 30 giorni. La cancellazione dell'account comporta automaticamente la cancellazione di tutti i dati associati, fatti salvi gli obblighi di conservazione legale.</p>
         <p>L'Utente ha inoltre diritto di: <strong style="color:rgba(255,255,255,0.6)">Accesso</strong> (art. 15) · <strong style="color:rgba(255,255,255,0.6)">Rettifica</strong> (art. 16) · <strong style="color:rgba(255,255,255,0.6)">Limitazione</strong> (art. 18) · <strong style="color:rgba(255,255,255,0.6)">Portabilità</strong> (art. 20) · <strong style="color:rgba(255,255,255,0.6)">Opposizione</strong> (art. 21) · <strong style="color:rgba(255,255,255,0.6)">Revoca del consenso</strong> in qualsiasi momento (art. 7.3), senza pregiudizio per la liceità del trattamento precedente.</p>
-        <p>Per esercitare i diritti: <strong style="color:rgba(0,245,255,0.7)">support@legacy.app</strong>. L'Utente ha altresì diritto di proporre reclamo al Garante per la Protezione dei Dati Personali: <strong style="color:rgba(0,245,255,0.7)">www.garanteprivacy.it</strong>.</p>
+        <p>Per esercitare i diritti: <strong style="color:rgba(212,184,168,0.7)">support@legacy.app</strong>. L'Utente ha altresì diritto di proporre reclamo al Garante per la Protezione dei Dati Personali: <strong style="color:rgba(212,184,168,0.7)">www.garanteprivacy.it</strong>.</p>
 
         <h3>6. Cookie e Tecnologie di Tracciamento</h3>
         <p>Legacy utilizza esclusivamente cookie tecnici necessari al funzionamento del Servizio (sessione di autenticazione Supabase). Non vengono utilizzati cookie di profilazione, cookie di terze parti a scopo pubblicitario né sistemi di tracciamento comportamentale. Per i dettagli si rinvia alla Cookie Policy.</p>
@@ -1238,7 +1238,7 @@
         <p>Utilizziamo il localStorage del browser per salvare le preferenze dell'utente (lingua, voce, tema sonoro). Questi dati rimangono sul tuo dispositivo e non vengono trasmessi a terzi.</p>
         <h3>Gestione</h3>
         <p>Puoi cancellare i dati di localStorage in qualsiasi momento dalle impostazioni del browser. La cancellazione comporterà il reset delle preferenze.</p>
-        <p style="margin-top:16px;color:rgba(0,245,255,0.4)">Legacy non utilizza Google Analytics, Facebook Pixel o altri sistemi di tracciamento pubblicitario.</p>
+        <p style="margin-top:16px;color:rgba(212,184,168,0.4)">Legacy non utilizza Google Analytics, Facebook Pixel o altri sistemi di tracciamento pubblicitario.</p>
       </div>
     </div>
   </div>
@@ -1247,12 +1247,12 @@
   <div id="modalNewInterview" class="modal-backdrop" onclick="closeNewInterviewModal(event)">
     <div class="modal-box w-full max-w-sm mx-4 glass-card rounded-2xl p-6">
       <div class="flex items-center justify-between mb-5">
-        <div><h3 class="font-display text-lg font-700 neon-cyan" data-i18n="modal_title">Nuova Intervista</h3><p class="font-mono text-[10px] tracking-[0.2em] uppercase mt-0.5" style="color:rgba(0,245,255,0.4)" data-i18n="modal_subtitle">A chi appartengono questi ricordi?</p></div>
+        <div><h3 class="font-display text-lg font-700 neon-cyan" data-i18n="modal_title">Nuova Intervista</h3><p class="font-mono text-[10px] tracking-[0.2em] uppercase mt-0.5" style="color:rgba(212,184,168,0.4)" data-i18n="modal_subtitle">A chi appartengono questi ricordi?</p></div>
         <button onclick="closeNewInterviewModal()" class="text-white/30 hover:text-white/60"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
       </div>
-      <div class="mb-4"><label class="block font-mono text-[10px] tracking-[0.22em] uppercase mb-2" style="color:rgba(0,245,255,0.5)"><span data-i18n="modal_name_label">Nome del protagonista</span></label><input id="modalProtagonistName" type="text" placeholder="Es. Nonno Antonio…" data-i18n-placeholder="modal_name_placeholder" autocomplete="off" class="setup-input"/></div>
-      <div class="mb-4"><label class="block font-mono text-[10px] tracking-[0.22em] uppercase mb-2" style="color:rgba(0,245,255,0.5)"><span data-i18n="label_gender">Genere</span></label><div class="flex gap-2"><button class="modal-gender-pill gender-pill active" data-gender="M" data-i18n="gender_m">Uomo</button><button class="modal-gender-pill gender-pill" data-gender="F" data-i18n="gender_f">Donna</button><button class="modal-gender-pill gender-pill" data-gender="Neutro" data-i18n="gender_other">Altro</button></div></div>
-      <div class="mb-5"><label class="block font-mono text-[10px] tracking-[0.22em] uppercase mb-2" style="color:rgba(0,245,255,0.5)"><span data-i18n="label_style">Stile del Biografo</span></label><div class="setup-select-wrap"><select id="modalTone" class="setup-input"><option value="Nostalgico ed Emozionale" data-i18n-option="tone_nostalgic">Nostalgico ed Emozionale</option><option value="Avventuroso e Dinamico" data-i18n-option="tone_adventurous">Avventuroso e Dinamico</option><option value="Leggero e Divertente" data-i18n-option="tone_light">Leggero e Divertente</option></select></div></div>
+      <div class="mb-4"><label class="block font-mono text-[10px] tracking-[0.22em] uppercase mb-2" style="color:rgba(212,184,168,0.5)"><span data-i18n="modal_name_label">Nome del protagonista</span></label><input id="modalProtagonistName" type="text" placeholder="Es. Nonno Antonio…" data-i18n-placeholder="modal_name_placeholder" autocomplete="off" class="setup-input"/></div>
+      <div class="mb-4"><label class="block font-mono text-[10px] tracking-[0.22em] uppercase mb-2" style="color:rgba(212,184,168,0.5)"><span data-i18n="label_gender">Genere</span></label><div class="flex gap-2"><button class="modal-gender-pill gender-pill active" data-gender="M" data-i18n="gender_m">Uomo</button><button class="modal-gender-pill gender-pill" data-gender="F" data-i18n="gender_f">Donna</button><button class="modal-gender-pill gender-pill" data-gender="Neutro" data-i18n="gender_other">Altro</button></div></div>
+      <div class="mb-5"><label class="block font-mono text-[10px] tracking-[0.22em] uppercase mb-2" style="color:rgba(212,184,168,0.5)"><span data-i18n="label_style">Stile del Biografo</span></label><div class="setup-select-wrap"><select id="modalTone" class="setup-input"><option value="Nostalgico ed Emozionale" data-i18n-option="tone_nostalgic">Nostalgico ed Emozionale</option><option value="Avventuroso e Dinamico" data-i18n-option="tone_adventurous">Avventuroso e Dinamico</option><option value="Leggero e Divertente" data-i18n-option="tone_light">Leggero e Divertente</option></select></div></div>
       <div id="modalError" class="form-error mb-3"></div>
       <button id="btnModalCreate" class="w-full py-3 rounded-xl btn-neon text-sm font-display font-600 tracking-[0.12em] uppercase text-white/90 flex items-center justify-center gap-2"><span id="btnModalCreateLabel" data-i18n="modal_cta">Crea e Inizia</span><span id="btnModalCreateSpinner" class="hidden auth-spinner"></span></button>
     </div>
@@ -1266,7 +1266,7 @@
       <nav class="sticky top-0 z-20 flex items-center justify-between px-6 py-4 glass-dark border-b border-white/5">
         <div class="flex items-center gap-2.5">
           <div class="w-7 h-7 rounded-lg btn-neon flex items-center justify-center flex-shrink-0">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(0,245,255,0.9)" stroke-width="2" stroke-linecap="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(212,184,168,0.9)" stroke-width="2" stroke-linecap="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg>
           </div>
           <span class="font-display font-700 tracking-widest text-sm neon-cyan">LEGACY</span>
         </div>
@@ -1276,7 +1276,7 @@
           <div class="flex items-center rounded-lg overflow-hidden" style="border:1px solid rgba(255,255,255,0.1)">
             <button id="btnLandingIT" onclick="setLandingLang('it')"
               class="px-3 py-1.5 font-mono text-[10px] tracking-wider transition-all duration-200"
-              style="background:rgba(0,245,255,0.12);color:rgba(0,245,255,0.9)">IT</button>
+              style="background:rgba(212,184,168,0.12);color:rgba(212,184,168,0.9)">IT</button>
             <button id="btnLandingEN" onclick="setLandingLang('en')"
               class="px-3 py-1.5 font-mono text-[10px] tracking-wider transition-all duration-200"
               style="background:transparent;color:rgba(255,255,255,0.4)">EN</button>
@@ -1294,7 +1294,7 @@
       <section class="flex flex-col items-center justify-center text-center landing-section pt-20 pb-16">
 
         <div class="opacity-0 animate-fade-up s1 mb-5">
-          <span class="pill-badge" style="color:rgba(0,245,255,0.75);border-color:rgba(0,245,255,0.2)">
+          <span class="pill-badge" style="color:rgba(212,184,168,0.75);border-color:rgba(212,184,168,0.2)">
             <span class="w-1.5 h-1.5 rounded-full bg-cyan-dim animate-glow-pulse inline-block"></span>
             Powered by Claude AI · 2026
           </span>
@@ -1307,7 +1307,7 @@
         </h1>
 
         <p class="opacity-0 animate-fade-up s3 max-w-xl mb-10 leading-relaxed"
-           style="color:rgba(200,210,255,0.65);font-family:'DM Mono',monospace;font-size:0.92rem">
+           style="color:rgba(200,210,255,0.65);font-family:'Inter',sans-serif;font-size:0.92rem">
           <span data-i18n="landing_hero_sub">Legacy è il biografo AI che trasforma i tuoi ricordi e le tue foto in un libro romanzato, pronto da leggere e scaricare in PDF. Gratis.</span>
         </p>
 
@@ -1324,11 +1324,11 @@
         <!-- Trust bar -->
         <div class="opacity-0 animate-fade-up s5 trust-bar max-w-lg w-full">
           <div class="trust-item">
-            <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="rgba(0,245,255,0.7)" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="rgba(212,184,168,0.7)" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             <span class="font-mono text-[10px] uppercase tracking-wider" style="color:rgba(255,255,255,0.4)"><span data-i18n="landing_trust_1">Fine-to-end cifrato</span></span>
           </div>
           <div class="trust-item">
-            <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="rgba(168,85,247,0.7)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+            <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="rgba(155,123,181,0.7)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
             <span class="font-mono text-[10px] uppercase tracking-wider" style="color:rgba(255,255,255,0.4)"><span data-i18n="landing_trust_2">Nessuna carta richiesta</span></span>
           </div>
           <div class="trust-item">
@@ -1344,8 +1344,8 @@
       <!-- ═══ SCOPRI LA MAGIA ═══ -->
       <section class="landing-section">
         <div class="text-center mb-10">
-          <span class="pill-badge mb-4 inline-block" style="color:rgba(0,245,255,0.7);border-color:rgba(0,245,255,0.2)">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="rgba(0,245,255,0.7)" style="display:inline;vertical-align:middle;margin-right:3px"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          <span class="pill-badge mb-4 inline-block" style="color:rgba(212,184,168,0.7);border-color:rgba(212,184,168,0.2)">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="rgba(212,184,168,0.7)" style="display:inline;vertical-align:middle;margin-right:3px"><polygon points="5 3 19 12 5 21 5 3"/></svg>
             <span data-i18n="magic_badge">Scopri la Magia</span>
           </span>
           <h2 class="font-display text-3xl sm:text-4xl font-700 mb-3" style="letter-spacing:-0.01em">
@@ -1386,13 +1386,13 @@
             <div class="flex items-center gap-4">
               <button class="magic-play-btn" id="btnLandingPlay" title="Play">
                 <!-- Icona Play (default) -->
-                <svg id="landingPlayIcon" width="16" height="16" viewBox="0 0 24 24" fill="rgba(0,245,255,0.9)" stroke="none">
+                <svg id="landingPlayIcon" width="16" height="16" viewBox="0 0 24 24" fill="rgba(212,184,168,0.9)" stroke="none">
                   <polygon points="5 3 19 12 5 21 5 3"/>
                 </svg>
               </button>
               <div class="flex-1">
                 <div class="flex justify-between mb-1">
-                  <span class="font-mono text-[9px]" style="color:rgba(0,245,255,0.5)" id="landingCurrentTime">0:00</span>
+                  <span class="font-mono text-[9px]" style="color:rgba(212,184,168,0.5)" id="landingCurrentTime">0:00</span>
                   <span class="font-mono text-[9px]" style="color:rgba(255,255,255,0.2)">2:14</span>
                 </div>
               </div>
@@ -1415,17 +1415,17 @@
                 <div class="book-line"></div>
                 <div class="book-line"></div>
                 <!-- Mini immagine simulata -->
-                <div style="margin:8px 10px 0;height:22px;background:rgba(168,85,247,0.12);border-radius:4px;border:1px solid rgba(168,85,247,0.2)"></div>
+                <div style="margin:8px 10px 0;height:22px;background:rgba(155,123,181,0.12);border-radius:4px;border:1px solid rgba(155,123,181,0.2)"></div>
                 <div class="book-line" style="margin-top:6px"></div>
                 <div class="book-line"></div>
               </div>
             </div>
-            <p class="font-display text-sm font-700 text-center relative" style="color:rgba(168,85,247,0.9)" data-i18n="magic_book_title">La tua storia, impaginata</p>
+            <p class="font-display text-sm font-700 text-center relative" style="color:rgba(155,123,181,0.9)" data-i18n="magic_book_title">La tua storia, impaginata</p>
             <p class="font-mono text-[10px] text-center mt-1 relative" style="color:rgba(255,255,255,0.35)" data-i18n="magic_book_sub">Pronto da stampare o condividere</p>
             <!-- PDF badge -->
-            <div class="mt-4 relative flex items-center gap-2 px-3 py-2 rounded-xl" style="background:rgba(168,85,247,0.08);border:1px solid rgba(168,85,247,0.2)">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(168,85,247,0.8)" stroke-width="2" stroke-linecap="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
-              <span class="font-mono text-[10px] tracking-wider" style="color:rgba(168,85,247,0.7)" data-i18n="magic_book_cta">Export PDF · Alta qualità · Un click</span>
+            <div class="mt-4 relative flex items-center gap-2 px-3 py-2 rounded-xl" style="background:rgba(155,123,181,0.08);border:1px solid rgba(155,123,181,0.2)">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(155,123,181,0.8)" stroke-width="2" stroke-linecap="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+              <span class="font-mono text-[10px] tracking-wider" style="color:rgba(155,123,181,0.7)" data-i18n="magic_book_cta">Export PDF · Alta qualità · Un click</span>
             </div>
           </div>
 
@@ -1437,7 +1437,7 @@
       <!-- ═══ COME FUNZIONA ═══ -->
       <section id="how" class="landing-section">
         <div class="text-center mb-14">
-          <span class="pill-badge mb-4 inline-block" style="color:rgba(168,85,247,0.75);border-color:rgba(168,85,247,0.2)" data-i18n="landing_how_title">Come funziona</span>
+          <span class="pill-badge mb-4 inline-block" style="color:#9b7bb5;border-color:rgba(155,123,181,0.2)" data-i18n="landing_how_title">Come funziona</span>
           <h2 class="font-display text-3xl sm:text-4xl font-700 mb-3" style="letter-spacing:-0.01em">
             <span data-i18n="landing_how_h2_1">Tre passi.</span><br/><span class="hero-gradient-text" data-i18n="landing_how_h2_2">Una vita intera preservata.</span>
           </h2>
@@ -1449,16 +1449,16 @@
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 relative">
 
           <!-- Step 1 -->
-          <div class="feature-card glass-card rounded-2xl p-7 relative" style="border-color:rgba(0,245,255,0.12)">
+          <div class="feature-card glass-card rounded-2xl p-7 relative" style="border-color:rgba(212,184,168,0.12)">
             <div class="hidden sm:block step-connector"></div>
             <div class="w-11 h-11 rounded-xl btn-neon flex items-center justify-center mb-5">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(0,245,255,0.9)" stroke-width="1.8" stroke-linecap="round">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(212,184,168,0.9)" stroke-width="1.8" stroke-linecap="round">
                 <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
                 <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
                 <line x1="12" y1="19" x2="12" y2="23"/>
               </svg>
             </div>
-            <div class="font-mono text-[9px] tracking-[0.3em] uppercase mb-2" style="color:rgba(0,245,255,0.5)"><span data-i18n="landing_step1_num">Passo 01</span></div>
+            <div class="font-mono text-[9px] tracking-[0.3em] uppercase mb-2" style="color:rgba(212,184,168,0.5)"><span data-i18n="landing_step1_num">Passo 01</span></div>
             <h3 class="font-display text-xl font-700 mb-3"><span data-i18n="landing_step1_title">Parla o scrivi in modo naturale</span></h3>
             <p class="font-mono text-xs leading-relaxed" style="color:rgba(200,210,255,0.5)">
               <span data-i18n="landing_step1_body">Il nostro biografo AI ti fa domande empatiche e guidate. Rispondi con la voce o con la tastiera — anche in dialetto.</span>
@@ -1466,16 +1466,16 @@
           </div>
 
           <!-- Step 2 -->
-          <div class="feature-card glass-card rounded-2xl p-7 relative" style="border-color:rgba(168,85,247,0.12)">
+          <div class="feature-card glass-card rounded-2xl p-7 relative" style="border-color:rgba(155,123,181,0.12)">
             <div class="hidden sm:block step-connector"></div>
             <div class="w-11 h-11 rounded-xl btn-violet flex items-center justify-center mb-5">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(168,85,247,0.9)" stroke-width="1.8" stroke-linecap="round">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(155,123,181,0.9)" stroke-width="1.8" stroke-linecap="round">
                 <rect x="3" y="3" width="18" height="18" rx="2"/>
                 <circle cx="8.5" cy="8.5" r="1.5"/>
                 <path d="m21 15-5-5L5 21"/>
               </svg>
             </div>
-            <div class="font-mono text-[9px] tracking-[0.3em] uppercase mb-2" style="color:rgba(168,85,247,0.5)"><span data-i18n="landing_step2_num">Passo 02</span></div>
+            <div class="font-mono text-[9px] tracking-[0.3em] uppercase mb-2" style="color:rgba(155,123,181,0.5)"><span data-i18n="landing_step2_num">Passo 02</span></div>
             <h3 class="font-display text-xl font-700 mb-3"><span data-i18n="landing_step2_title">Aggiungi le tue foto più care</span></h3>
             <p class="font-mono text-xs leading-relaxed" style="color:rgba(200,210,255,0.5)">
               <span data-i18n="landing_step2_body">Carica le immagini direttamente dalla chat. L'IA le "vede", le commenta e le inserisce nel libro al momento giusto.</span>
@@ -1542,15 +1542,15 @@
           </div>
 
           <!-- Te -->
-          <div class="target-card glass-card rounded-2xl p-7" style="border-color:rgba(0,245,255,0.15)">
+          <div class="target-card glass-card rounded-2xl p-7" style="border-color:rgba(212,184,168,0.15)">
             <div class="text-3xl mb-4">🌱</div>
-            <div class="font-mono text-[9px] tracking-[0.3em] uppercase mb-2" style="color:rgba(0,245,255,0.6)"><span data-i18n="landing_for3_label">Per Te</span></div>
+            <div class="font-mono text-[9px] tracking-[0.3em] uppercase mb-2" style="color:rgba(212,184,168,0.6)"><span data-i18n="landing_for3_label">Per Te</span></div>
             <h3 class="font-display text-xl font-700 mb-3"><span data-i18n="landing_for3_title">Un diario terapeutico della tua crescita</span></h3>
             <p class="font-mono text-xs leading-relaxed" style="color:rgba(200,210,255,0.5)">
               <span data-i18n="landing_for3_body">Metti a fuoco chi eri, chi sei e dove stai andando. Scrivere di sé è il primo passo per capirsi davvero.</span>
             </p>
             <div class="mt-5 pt-4 border-t border-white/5">
-              <span class="font-mono text-[10px]" style="color:rgba(0,245,255,0.5)"><span data-i18n="landing_for3_tag">Riflessione e crescita personale ✦</span></span>
+              <span class="font-mono text-[10px]" style="color:rgba(212,184,168,0.5)"><span data-i18n="landing_for3_tag">Riflessione e crescita personale ✦</span></span>
             </div>
           </div>
 
@@ -1607,10 +1607,10 @@
           </div>
 
           <!-- Review 3 — Personale 🌱 -->
-          <div class="review-card glass-card rounded-2xl p-6" style="border-color:rgba(168,85,247,0.12)">
+          <div class="review-card glass-card rounded-2xl p-6" style="border-color:rgba(155,123,181,0.12)">
             <div class="flex items-center justify-between mb-4">
               <div class="flex gap-0.5"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-              <span class="font-mono text-[8px] tracking-wider uppercase px-2 py-1 rounded-full" style="background:rgba(168,85,247,0.1);border:1px solid rgba(168,85,247,0.2);color:rgba(168,85,247,0.7)">🌱 Personale</span>
+              <span class="font-mono text-[8px] tracking-wider uppercase px-2 py-1 rounded-full" style="background:rgba(155,123,181,0.1);border:1px solid rgba(155,123,181,0.2);color:rgba(155,123,181,0.7)">🌱 Personale</span>
             </div>
             <p class="font-mono leading-relaxed mb-5" style="color:rgba(220,225,255,0.75);font-size:0.82rem">
               <span data-i18n="landing_review3">"Usavo Legacy come diario terapeutico dopo un momento difficile. Scrivere di me, farmi fare domande dall'IA… ha cambiato il modo in cui mi vedo. Grazie Legacy."</span>
@@ -1631,11 +1631,11 @@
 
       <!-- ═══ FOOTER CTA ═══ -->
       <section class="landing-section text-center pb-8">
-        <div class="glass-card rounded-3xl px-8 py-14 max-w-2xl mx-auto relative overflow-hidden" style="border-color:rgba(0,245,255,0.18)">
+        <div class="glass-card rounded-3xl px-8 py-14 max-w-2xl mx-auto relative overflow-hidden" style="border-color:rgba(212,184,168,0.18)">
           <!-- bg glow decorativo -->
-          <div style="position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 100%,rgba(0,245,255,0.07) 0%,transparent 70%);pointer-events:none"></div>
+          <div style="position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 100%,rgba(212,184,168,0.07) 0%,transparent 70%);pointer-events:none"></div>
 
-          <div class="pill-badge mx-auto mb-6 w-fit" style="color:rgba(0,245,255,0.7);border-color:rgba(0,245,255,0.2)">
+          <div class="pill-badge mx-auto mb-6 w-fit" style="color:rgba(212,184,168,0.7);border-color:rgba(212,184,168,0.2)">
             <span class="w-1.5 h-1.5 rounded-full bg-cyan-dim animate-glow-pulse inline-block"></span>
             <span data-i18n="landing_footer_badge">Gratuito per sempre · Nessuna carta</span>
           </div>
@@ -1669,15 +1669,15 @@
         <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div class="flex items-center gap-2.5">
             <div class="w-6 h-6 rounded-lg btn-neon flex items-center justify-center flex-shrink-0">
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="rgba(0,245,255,0.9)" stroke-width="2" stroke-linecap="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg>
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="rgba(212,184,168,0.9)" stroke-width="2" stroke-linecap="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg>
             </div>
             <span class="font-display font-700 tracking-widest text-sm neon-cyan">LEGACY</span>
             <span class="font-mono text-[10px]" style="color:rgba(255,255,255,0.2)">— Eredità Viva</span>
           </div>
           <div class="flex items-center gap-5">
-            <button onclick="openLegalModal('modalPrivacy')" class="font-mono text-[9px] tracking-widest uppercase transition-colors" style="color:rgba(255,255,255,0.2);background:none;border:none;cursor:pointer" onmouseover="this.style.color='rgba(0,245,255,0.6)'" onmouseout="this.style.color='rgba(255,255,255,0.2)'">Privacy Policy</button>
-            <button onclick="openLegalModal('modalTerms')" class="font-mono text-[9px] tracking-widest uppercase transition-colors" style="color:rgba(255,255,255,0.2);background:none;border:none;cursor:pointer" onmouseover="this.style.color='rgba(0,245,255,0.6)'" onmouseout="this.style.color='rgba(255,255,255,0.2)'">Termini</button>
-            <button onclick="openLegalModal('modalCookies')" class="font-mono text-[9px] tracking-widest uppercase transition-colors" style="color:rgba(255,255,255,0.2);background:none;border:none;cursor:pointer" onmouseover="this.style.color='rgba(0,245,255,0.6)'" onmouseout="this.style.color='rgba(255,255,255,0.2)'">Cookie Policy</button>
+            <button onclick="openLegalModal('modalPrivacy')" class="font-mono text-[9px] tracking-widest uppercase transition-colors" style="color:rgba(255,255,255,0.2);background:none;border:none;cursor:pointer" onmouseover="this.style.color='rgba(212,184,168,0.6)'" onmouseout="this.style.color='rgba(255,255,255,0.2)'">Privacy Policy</button>
+            <button onclick="openLegalModal('modalTerms')" class="font-mono text-[9px] tracking-widest uppercase transition-colors" style="color:rgba(255,255,255,0.2);background:none;border:none;cursor:pointer" onmouseover="this.style.color='rgba(212,184,168,0.6)'" onmouseout="this.style.color='rgba(255,255,255,0.2)'">Termini</button>
+            <button onclick="openLegalModal('modalCookies')" class="font-mono text-[9px] tracking-widest uppercase transition-colors" style="color:rgba(255,255,255,0.2);background:none;border:none;cursor:pointer" onmouseover="this.style.color='rgba(212,184,168,0.6)'" onmouseout="this.style.color='rgba(255,255,255,0.2)'">Cookie Policy</button>
           </div>
           <span class="font-mono text-[9px] tracking-widest uppercase" style="color:rgba(255,255,255,0.15)"><span data-i18n="landing_copyright">© 2026 Legacy — Tutti i diritti riservati</span></span>
         </div>
@@ -1691,12 +1691,12 @@
     <div class="min-h-screen flex items-center justify-center px-6 py-16 relative">
       <button id="btnAuthBack" class="fixed top-6 left-6 flex items-center gap-2 font-mono text-[11px] tracking-wider uppercase btn-ghost px-4 py-2 rounded-xl" style="color:rgba(255,255,255,0.4)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg><span data-i18n="btn_back_auth">Indietro</span></button>
       <div class="w-full max-w-sm">
-        <div class="text-center mb-8"><div class="w-12 h-12 mx-auto rounded-2xl btn-neon flex items-center justify-center mb-4"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(0,245,255,0.9)" stroke-width="1.5" stroke-linecap="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div><h1 class="font-display text-3xl font-800 tracking-wider neon-cyan">LEGACY</h1><p class="font-mono text-[10px] tracking-[0.3em] uppercase mt-1" style="color:rgba(0,245,255,0.45)">EREDITÀ VIVA</p></div>
+        <div class="text-center mb-8"><div class="w-12 h-12 mx-auto rounded-2xl btn-neon flex items-center justify-center mb-4"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(212,184,168,0.9)" stroke-width="1.5" stroke-linecap="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div><h1 class="font-display text-3xl font-800 tracking-wider neon-cyan">LEGACY</h1><p class="font-mono text-[10px] tracking-[0.3em] uppercase mt-1" style="color:rgba(212,184,168,0.45)">EREDITÀ VIVA</p></div>
         <div class="glass-card rounded-2xl p-6">
 
           <!-- Tab Accedi / Crea Account -->
           <div class="flex mb-5 rounded-xl overflow-hidden" style="border:1px solid rgba(255,255,255,0.08)">
-            <button id="tabLogin" class="flex-1 py-2 text-[11px] font-display tracking-[0.15em] uppercase font-600 transition-all duration-300" style="background:rgba(0,245,255,0.12);color:rgba(0,245,255,0.9)" data-i18n="auth_login_tab">Accedi</button>
+            <button id="tabLogin" class="flex-1 py-2 text-[11px] font-display tracking-[0.15em] uppercase font-600 transition-all duration-300" style="background:rgba(212,184,168,0.12);color:rgba(212,184,168,0.9)" data-i18n="auth_login_tab">Accedi</button>
             <button id="tabRegister" class="flex-1 py-2 text-[11px] font-display tracking-[0.15em] uppercase font-600 transition-all duration-300" style="background:transparent;color:rgba(255,255,255,0.3)" data-i18n="auth_register_tab">Crea Account</button>
           </div>
 
@@ -1718,13 +1718,13 @@
           <!-- Campi email + password -->
           <div class="space-y-3">
             <div>
-              <label class="block font-mono text-[10px] tracking-[0.2em] uppercase mb-1.5" style="color:rgba(0,245,255,0.45)">
+              <label class="block font-mono text-[10px] tracking-[0.2em] uppercase mb-1.5" style="color:rgba(212,184,168,0.45)">
                 <span data-i18n="auth_email_label">Email</span>
               </label>
               <input id="authEmail" type="email" placeholder="nome@email.com" data-i18n-placeholder="auth_email_placeholder" autocomplete="email" class="input-glass"/>
             </div>
             <div>
-              <label class="block font-mono text-[10px] tracking-[0.2em] uppercase mb-1.5" style="color:rgba(0,245,255,0.45)">
+              <label class="block font-mono text-[10px] tracking-[0.2em] uppercase mb-1.5" style="color:rgba(212,184,168,0.45)">
                 <span data-i18n="auth_password_label">Password</span>
               </label>
               <input id="authPassword" type="password" placeholder="••••••••" data-i18n-placeholder="auth_pw_placeholder" autocomplete="current-password" class="input-glass"/>
@@ -1745,9 +1745,9 @@
           <div id="legalConsents" style="display:none">
             <button id="btnRegister"
               class="mt-4 w-full py-3 rounded-xl btn-violet text-sm font-display font-600 tracking-[0.12em] uppercase flex items-center justify-center gap-2"
-              style="color:rgba(168,85,247,0.9)">
+              style="color:rgba(155,123,181,0.9)">
               <span id="btnRegisterLabel" data-i18n="auth_register_btn">Crea Account</span>
-              <span id="btnRegisterSpinner" class="hidden auth-spinner" style="border-top-color:rgba(168,85,247,0.9)"></span>
+              <span id="btnRegisterSpinner" class="hidden auth-spinner" style="border-top-color:rgba(155,123,181,0.9)"></span>
             </button>
           </div>
         </div>
@@ -1763,13 +1763,13 @@
       <!-- Header -->
       <div class="text-center mb-6">
         <div class="w-10 h-10 mx-auto rounded-xl btn-neon flex items-center justify-center mb-3">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(0,245,255,0.9)" stroke-width="2" stroke-linecap="round">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(212,184,168,0.9)" stroke-width="2" stroke-linecap="round">
             <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
             <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
           </svg>
         </div>
         <h2 class="font-display text-xl font-700 tracking-wide neon-cyan mb-1" data-i18n="path_modal_title">Cosa vuoi creare oggi?</h2>
-        <p class="font-mono text-[10px] tracking-[0.2em] uppercase" style="color:rgba(0,245,255,0.35)" data-i18n="path_modal_sub">Scegli il tuo percorso narrativo</p>
+        <p class="font-mono text-[10px] tracking-[0.2em] uppercase" style="color:rgba(212,184,168,0.35)" data-i18n="path_modal_sub">Scegli il tuo percorso narrativo</p>
       </div>
 
       <!-- Grid 3 card -->
@@ -1778,7 +1778,7 @@
         <!-- Card 1: Personale -->
         <div class="path-card path-personal" onclick="selectPathType('personale')">
           <div class="path-card-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(0,245,255,0.8)" stroke-width="1.8" stroke-linecap="round">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(212,184,168,0.8)" stroke-width="1.8" stroke-linecap="round">
               <circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/>
             </svg>
           </div>
@@ -1800,7 +1800,7 @@
         <!-- Card 3: Famiglia -->
         <div class="path-card path-family" onclick="selectPathType('famiglia')">
           <div class="path-card-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(168,85,247,0.8)" stroke-width="1.8" stroke-linecap="round">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(155,123,181,0.8)" stroke-width="1.8" stroke-linecap="round">
               <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
               <circle cx="9" cy="7" r="4"/>
               <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
@@ -1830,7 +1830,7 @@
 
       <!-- SIDEBAR -->
       <aside id="sidebar" class="h-screen flex flex-col glass-dark border-r border-white/5 relative z-50">
-        <div class="flex items-center gap-2.5 px-5 py-5 border-b border-white/5"><div class="w-7 h-7 rounded-lg btn-neon flex items-center justify-center flex-shrink-0"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(0,245,255,0.9)" stroke-width="2" stroke-linecap="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg></div><span id="logoSidebar" class="font-display font-700 tracking-widest text-sm neon-cyan" style="cursor:pointer">LEGACY</span><button onclick="toggleSidebar(false)" class="ml-auto md:hidden text-white/30 hover:text-white/60"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+        <div class="flex items-center gap-2.5 px-5 py-5 border-b border-white/5"><div class="w-7 h-7 rounded-lg btn-neon flex items-center justify-center flex-shrink-0"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(212,184,168,0.9)" stroke-width="2" stroke-linecap="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg></div><span id="logoSidebar" class="font-display font-700 tracking-widest text-sm neon-cyan" style="cursor:pointer">LEGACY</span><button onclick="toggleSidebar(false)" class="ml-auto md:hidden text-white/30 hover:text-white/60"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
         <div class="px-4 py-4"><button id="btnNewInterview" class="w-full btn-neon rounded-xl py-2.5 px-4 flex items-center justify-center gap-2 text-xs font-display tracking-[0.12em] uppercase text-white/90"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Nuova Intervista</button></div>
 
         <div class="flex-1 overflow-hidden flex flex-col px-4"><div class="font-mono text-[9px] tracking-[0.25em] uppercase mb-2 px-1" style="color:rgba(255,255,255,0.25)" data-i18n="sidebar_my_stories">Le mie Storie</div><div id="storiesList" class="flex-1 overflow-y-auto space-y-1"><div class="font-mono text-[10px] px-2 py-3 text-center" style="color:rgba(255,255,255,0.2)">Caricamento…</div></div></div>
@@ -1856,13 +1856,13 @@
 
             <!-- Orb decorativo -->
             <div style="position:absolute;inset:0;pointer-events:none;overflow:hidden">
-              <div style="position:absolute;top:30%;left:50%;transform:translateX(-50%);width:480px;height:480px;background:radial-gradient(circle,rgba(0,245,255,0.06) 0%,transparent 65%);border-radius:50%"></div>
+              <div style="position:absolute;top:30%;left:50%;transform:translateX(-50%);width:480px;height:480px;background:radial-gradient(circle,rgba(212,184,168,0.06) 0%,transparent 65%);border-radius:50%"></div>
             </div>
 
             <!-- Logo -->
             <div class="relative w-20 h-20 mx-auto mb-8 flex items-center justify-center rounded-2xl btn-neon"
-              style="box-shadow:0 0 40px rgba(0,245,255,0.18)">
-              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="rgba(0,245,255,0.9)" stroke-width="1.4" stroke-linecap="round">
+              style="box-shadow:0 0 40px rgba(212,184,168,0.18)">
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="rgba(212,184,168,0.9)" stroke-width="1.4" stroke-linecap="round">
                 <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
                 <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
                 <line x1="12" y1="19" x2="12" y2="23"/>
@@ -1901,12 +1901,12 @@
           <div id="panelSetup" class="panel-screen visible flex flex-col items-center justify-center px-6 py-8 overflow-y-auto bg-cosmos">
 
             <div style="position:absolute;inset:0;pointer-events:none;overflow:hidden">
-              <div style="position:absolute;top:30%;left:50%;transform:translateX(-50%);width:480px;height:480px;background:radial-gradient(circle,rgba(0,245,255,0.06) 0%,transparent 65%);border-radius:50%"></div>
+              <div style="position:absolute;top:30%;left:50%;transform:translateX(-50%);width:480px;height:480px;background:radial-gradient(circle,rgba(212,184,168,0.06) 0%,transparent 65%);border-radius:50%"></div>
             </div>
 
             <div class="relative w-20 h-20 mx-auto mb-8 flex items-center justify-center rounded-2xl btn-neon"
-              style="box-shadow:0 0 40px rgba(0,245,255,0.18)">
-              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="rgba(0,245,255,0.9)" stroke-width="1.4" stroke-linecap="round">
+              style="box-shadow:0 0 40px rgba(212,184,168,0.18)">
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="rgba(212,184,168,0.9)" stroke-width="1.4" stroke-linecap="round">
                 <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
                 <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
                 <line x1="12" y1="19" x2="12" y2="23"/>
@@ -1944,19 +1944,19 @@
               <!-- Titolo sessione -->
               <div class="flex-shrink-0">
                 <p id="headerSubtitle" class="font-display font-700 text-sm tracking-wider neon-cyan" data-i18n="chat_header_title">Intervista in corso</p>
-                <p id="headerToneLabel" class="font-mono text-[9px] tracking-[0.2em] uppercase" style="color:rgba(0,245,255,0.4)">Stile: Nostalgico</p>
+                <p id="headerToneLabel" class="font-mono text-[9px] tracking-[0.2em] uppercase" style="color:rgba(212,184,168,0.4)">Stile: Nostalgico</p>
               </div>
               <!-- Bottoni azione -->
               <div id="bookButtonsContainer" class="flex items-center gap-2 flex-shrink-0">
-                <button id="btnGenerateBook" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full btn-generate text-[10px] font-display tracking-widest uppercase font-600" style="color:rgba(168,85,247,0.9)">
+                <button id="btnGenerateBook" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full btn-generate text-[10px] font-display tracking-widest uppercase font-600" style="color:rgba(155,123,181,0.9)">
                   <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
                   <span data-i18n="btn_generate">Genera Archivio</span>
                 </button>
-                <button id="btnReadBook" class="hidden flex items-center gap-1.5 px-3 py-1.5 rounded-full btn-read text-[10px] font-display tracking-widest uppercase font-600" style="color:rgba(0,245,255,0.85)">
+                <button id="btnReadBook" class="hidden flex items-center gap-1.5 px-3 py-1.5 rounded-full btn-read text-[10px] font-display tracking-widest uppercase font-600" style="color:rgba(212,184,168,0.85)">
                   <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
                   <span data-i18n="btn_read">Leggi Archivio</span>
                 </button>
-                <button id="btnUpdateBook" class="hidden flex items-center gap-1.5 px-3 py-1.5 rounded-full btn-generate text-[10px] font-display tracking-widest uppercase font-600" style="color:rgba(168,85,247,0.7)">
+                <button id="btnUpdateBook" class="hidden flex items-center gap-1.5 px-3 py-1.5 rounded-full btn-generate text-[10px] font-display tracking-widest uppercase font-600" style="color:rgba(155,123,181,0.7)">
                   <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/></svg>
                   <span data-i18n="btn_update">Aggiorna</span>
                 </button>
@@ -1965,7 +1965,7 @@
 
             <div id="chatArea" class="overflow-y-auto px-5 py-4 space-y-3 scroll-smooth" style="flex:1 1 0;min-height:0;-webkit-overflow-scrolling:touch"></div>
 
-            <div id="typingIndicator" class="hidden px-5 pb-2 flex-shrink-0"><div class="inline-flex items-center gap-2 glass rounded-2xl rounded-bl-sm px-4 py-2.5 border border-white/10"><div class="flex gap-1"><div class="dot-1 w-1.5 h-1.5 rounded-full" style="background:rgba(0,245,255,0.7)"></div><div class="dot-2 w-1.5 h-1.5 rounded-full" style="background:rgba(0,245,255,0.7)"></div><div class="dot-3 w-1.5 h-1.5 rounded-full" style="background:rgba(0,245,255,0.7)"></div></div><span class="font-mono text-[10px] tracking-wider" style="color:rgba(0,245,255,0.5)">Elaborazione…</span></div></div>
+            <div id="typingIndicator" class="hidden px-5 pb-2 flex-shrink-0"><div class="inline-flex items-center gap-2 glass rounded-2xl rounded-bl-sm px-4 py-2.5 border border-white/10"><div class="flex gap-1"><div class="dot-1 w-1.5 h-1.5 rounded-full" style="background:rgba(212,184,168,0.7)"></div><div class="dot-2 w-1.5 h-1.5 rounded-full" style="background:rgba(212,184,168,0.7)"></div><div class="dot-3 w-1.5 h-1.5 rounded-full" style="background:rgba(212,184,168,0.7)"></div></div><span class="font-mono text-[10px] tracking-wider" style="color:rgba(212,184,168,0.5)">Elaborazione…</span></div></div>
 
             <!-- Input bar con graffetta + anteprima immagine -->
             <div class="glass-dark border-t border-white/5" style="flex-shrink:0;padding:8px 12px;padding-bottom:max(12px,env(safe-area-inset-bottom));width:100%;box-sizing:border-box">
@@ -1983,7 +1983,7 @@
               <div class="flex items-center gap-2 mb-3 rounded-xl px-3 py-2 border border-white/10 glass" style="background:rgba(0,0,0,0.25)">
                 <!-- Graffetta / foto -->
                 <button id="btnAttach" class="btn-attach w-7 h-7 rounded-lg flex items-center justify-center" title="Allega foto">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(0,245,255,0.6)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(212,184,168,0.6)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/>
                   </svg>
                 </button>
@@ -1991,15 +1991,15 @@
                 <input id="imageFileInput" type="file" accept="image/jpeg,image/png,image/gif,image/webp" class="hidden" />
 
                 <input id="textInput" type="text" placeholder="Scrivi il tuo ricordo..." data-i18n-placeholder="chat_input_placeholder" autocomplete="off" class="flex-1 bg-transparent text-sm text-white/80 placeholder:text-white/25 font-mono focus:outline-none" />
-                <button id="btnSendText" class="flex-shrink-0 w-7 h-7 rounded-lg btn-neon flex items-center justify-center active:scale-90 transition-transform"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(0,245,255,0.9)" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+                <button id="btnSendText" class="flex-shrink-0 w-7 h-7 rounded-lg btn-neon flex items-center justify-center active:scale-90 transition-transform"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(212,184,168,0.9)" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
               </div>
 
               <div class="flex flex-col items-center gap-2">
-                <p id="micStatus" class="font-mono text-[10px] tracking-[0.2em] uppercase h-4" style="color:rgba(0,245,255,0.4)" data-i18n="mic_status">Oppure tocca per parlare</p>
+                <p id="micStatus" class="font-mono text-[10px] tracking-[0.2em] uppercase h-4" style="color:rgba(212,184,168,0.4)" data-i18n="mic_status">Oppure tocca per parlare</p>
                 <div class="relative flex items-center justify-center">
                   <div id="micRing" class="hidden absolute w-16 h-16 rounded-full border pointer-events-none" style="animation:ring-expand 1.5s ease-out infinite;border-color:rgba(255,45,85,0.6)"></div>
-                  <button id="btnMic" class="relative w-16 h-16 rounded-full flex items-center justify-center focus:outline-none active:scale-95 transition-transform duration-150 mic-idle" style="background:linear-gradient(135deg,rgba(0,245,255,0.15),rgba(124,58,237,0.2));border:1px solid rgba(0,245,255,0.35);" aria-label="Registra">
-                    <svg id="micIconDefault" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(0,245,255,0.9)" stroke-width="1.8" stroke-linecap="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="22" x2="16" y2="22"/></svg>
+                  <button id="btnMic" class="relative w-16 h-16 rounded-full flex items-center justify-center focus:outline-none active:scale-95 transition-transform duration-150 mic-idle" style="background:linear-gradient(135deg,rgba(212,184,168,0.15),rgba(107,79,138,0.2));border:1px solid rgba(212,184,168,0.35);" aria-label="Registra">
+                    <svg id="micIconDefault" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(212,184,168,0.9)" stroke-width="1.8" stroke-linecap="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="22" x2="16" y2="22"/></svg>
                     <svg id="micIconStop" class="hidden" width="20" height="20" viewBox="0 0 24 24" fill="rgba(255,45,85,0.9)"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>
                   </button>
                 </div>
@@ -2009,12 +2009,12 @@
 
           <!-- PANEL: BOOK -->
           <div id="panelBook" class="panel-screen hidden flex-col bg-cosmos">
-            <div id="writingOverlay" class="absolute inset-0 z-20 flex flex-col items-center justify-center gap-6 opacity-0 pointer-events-none"><div class="relative w-20 h-20 flex items-center justify-center"><div class="absolute inset-0 rounded-full border border-violet-bright/30 animate-ping"></div><div class="absolute inset-2 rounded-full border border-cyan/20 animate-ping" style="animation-delay:0.3s"></div><svg class="relative z-10" width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5z" stroke="rgba(0,245,255,0.8)" stroke-width="1.2" stroke-linecap="round"/><path d="M2 17l10 5 10-5" stroke="rgba(168,85,247,0.8)" stroke-width="1.2" stroke-linecap="round"/><path d="M2 12l10 5 10-5" stroke="rgba(0,245,255,0.5)" stroke-width="1.2" stroke-linecap="round"/></svg></div><div class="w-52 flex flex-col gap-2"><div class="data-line" style="animation-delay:0s"></div><div class="data-line" style="animation-delay:0.25s"></div><div class="data-line" style="animation-delay:0.5s"></div><div class="data-line" style="animation-delay:0.75s"></div><div class="data-line" style="animation-delay:1s"></div></div><p class="font-display text-lg font-600 tracking-[0.2em] uppercase neon-cyan text-center" data-i18n="book_compiling">Compilazione in corso</p><p class="font-mono text-[10px] tracking-widest uppercase text-center" style="color:rgba(255,255,255,0.3)" data-i18n="book_analyzing">Analisi dei ricordi… ~15 sec</p></div>
+            <div id="writingOverlay" class="absolute inset-0 z-20 flex flex-col items-center justify-center gap-6 opacity-0 pointer-events-none"><div class="relative w-20 h-20 flex items-center justify-center"><div class="absolute inset-0 rounded-full border border-violet-bright/30 animate-ping"></div><div class="absolute inset-2 rounded-full border border-cyan/20 animate-ping" style="animation-delay:0.3s"></div><svg class="relative z-10" width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5z" stroke="rgba(212,184,168,0.8)" stroke-width="1.2" stroke-linecap="round"/><path d="M2 17l10 5 10-5" stroke="rgba(155,123,181,0.8)" stroke-width="1.2" stroke-linecap="round"/><path d="M2 12l10 5 10-5" stroke="rgba(212,184,168,0.5)" stroke-width="1.2" stroke-linecap="round"/></svg></div><div class="w-52 flex flex-col gap-2"><div class="data-line" style="animation-delay:0s"></div><div class="data-line" style="animation-delay:0.25s"></div><div class="data-line" style="animation-delay:0.5s"></div><div class="data-line" style="animation-delay:0.75s"></div><div class="data-line" style="animation-delay:1s"></div></div><p class="font-display text-lg font-600 tracking-[0.2em] uppercase neon-cyan text-center" data-i18n="book_compiling">Compilazione in corso</p><p class="font-mono text-[10px] tracking-widest uppercase text-center" style="color:rgba(255,255,255,0.3)" data-i18n="book_analyzing">Analisi dei ricordi… ~15 sec</p></div>
             <div id="bookPage" class="flex flex-col flex-1 opacity-0 pointer-events-none">
               <div class="flex flex-col px-5 pt-4 pb-3 glass-dark border-b border-white/5 flex-shrink-0">
                 <!-- Riga principale: Torna / Titolo / PDF -->
                 <div class="flex items-center justify-between">
-                  <button id="btnBackToChat" class="flex items-center gap-2 font-mono text-[11px] tracking-wider uppercase" style="color:rgba(0,245,255,0.6)">
+                  <button id="btnBackToChat" class="flex items-center gap-2 font-mono text-[11px] tracking-wider uppercase" style="color:rgba(212,184,168,0.6)">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg><span data-i18n="btn_back">Torna</span>
                   </button>
                   <span class="font-display text-sm font-700 tracking-[0.25em] uppercase neon-violet" data-i18n="book_datapad">Data-Pad</span>
@@ -2022,9 +2022,9 @@
                     <!-- Bottone Ascolta Audiolibro -->
                     <button id="btnListenAudiobook"
                       class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-mono text-[10px] tracking-wider uppercase transition-all duration-200"
-                      style="background:rgba(0,245,255,0.08);border:1px solid rgba(0,245,255,0.3);color:rgba(0,245,255,0.8);"
+                      style="background:rgba(212,184,168,0.08);border:1px solid rgba(212,184,168,0.3);color:rgba(212,184,168,0.8);"
                       title="Ascolta Audiolibro">
-                      <svg id="btnListenIcon" width="11" height="11" viewBox="0 0 24 24" fill="rgba(0,245,255,0.8)" stroke="none">
+                      <svg id="btnListenIcon" width="11" height="11" viewBox="0 0 24 24" fill="rgba(212,184,168,0.8)" stroke="none">
                         <polygon points="5 3 19 12 5 21 5 3"/>
                       </svg>
                       <span id="btnListenLabel" data-i18n="btn_listen">Ascolta</span>
@@ -2044,7 +2044,7 @@
                     <!-- PDF -->
                     <button id="btnDownloadPdf"
                       class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-mono text-[10px] tracking-wider uppercase transition-all duration-200"
-                      style="background:rgba(168,85,247,0.1);border:1px solid rgba(168,85,247,0.35);color:rgba(168,85,247,0.85);"
+                      style="background:rgba(155,123,181,0.1);border:1px solid rgba(155,123,181,0.35);color:rgba(155,123,181,0.85);"
                       title="Scarica PDF">
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
@@ -2056,7 +2056,7 @@
 
                 <!-- Clonazione Voce per Audiolibro -->
                 <div id="bookVoiceSection" class="hidden mt-3 pt-3 border-t border-white/5">
-                  <p class="font-mono text-[9px] tracking-[0.2em] uppercase mb-2" style="color:rgba(168,85,247,0.5)">Voce per l'Audiolibro</p>
+                  <p class="font-mono text-[9px] tracking-[0.2em] uppercase mb-2" style="color:rgba(155,123,181,0.5)">Voce per l'Audiolibro</p>
                   <div class="flex items-center gap-2 flex-wrap">
                     <!-- Badge voce attiva -->
                     <div id="voicePanelBadge" class="hidden voice-cloned-badge" style="font-size:0.6rem;padding:2px 7px">
@@ -2069,17 +2069,17 @@
                       onclick="document.getElementById('voiceSampleInput').click()"
                       style="padding:8px 12px;display:flex;flex-direction:row;align-items:center;gap:8px;cursor:pointer">
                       <input type="file" id="voiceSampleInput" accept=".mp3,.wav,.m4a,.webm,.ogg" class="hidden" />
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(168,85,247,0.6)" stroke-width="1.8" stroke-linecap="round">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(155,123,181,0.6)" stroke-width="1.8" stroke-linecap="round">
                         <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
                         <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
                         <line x1="12" y1="19" x2="12" y2="23"/>
                       </svg>
-                      <p id="voiceUploadLabel" class="font-mono text-[9px] tracking-wide" style="color:rgba(168,85,247,0.7)" data-i18n="voice_upload_label">Carica campione</p>
+                      <p id="voiceUploadLabel" class="font-mono text-[9px] tracking-wide" style="color:rgba(155,123,181,0.7)" data-i18n="voice_upload_label">Carica campione</p>
                     </div>
                     <!-- Bottone clona -->
                     <button id="btnCloneVoice" disabled
                       class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg btn-violet text-[10px] font-display font-600 tracking-[0.08em] uppercase opacity-40"
-                      style="color:rgba(168,85,247,0.9)">
+                      style="color:rgba(155,123,181,0.9)">
                       <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg>
                       <span id="btnCloneVoiceLabel" data-i18n="voice_clone_btn">Clona Voce</span>
                       <span id="btnCloneVoiceSpinner" class="hidden clone-spinner"></span>
@@ -2089,35 +2089,35 @@
                       class="hidden px-3 py-1.5 rounded-lg btn-ghost text-[10px] font-mono tracking-wider uppercase"
                       style="color:rgba(255,45,85,0.55)" data-i18n="voice_clone_remove">Rimuovi</button>
                   </div>
-                  <div id="voiceCloneFeedback" class="hidden font-mono text-[9px] mt-1.5" style="color:rgba(0,245,255,0.8)"></div>
+                  <div id="voiceCloneFeedback" class="hidden font-mono text-[9px] mt-1.5" style="color:rgba(212,184,168,0.8)"></div>
                 </div>
 
                 <!-- Player audiolibro (hidden di default) -->
                 <div id="audiobookPlayer">
-                  <svg width="11" height="11" viewBox="0 0 24 24" fill="rgba(0,245,255,0.6)" style="flex-shrink:0">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="rgba(212,184,168,0.6)" style="flex-shrink:0">
                     <polygon points="5 3 19 12 5 21 5 3"/>
                   </svg>
-                  <span class="font-mono text-[9px] tracking-wider uppercase" style="color:rgba(0,245,255,0.6)" data-i18n="audiobook_playing">In riproduzione</span>
+                  <span class="font-mono text-[9px] tracking-wider uppercase" style="color:rgba(212,184,168,0.6)" data-i18n="audiobook_playing">In riproduzione</span>
                   <!-- Barra progresso -->
-                  <div style="flex:1;height:2px;background:rgba(0,245,255,0.15);border-radius:99px;min-width:60px">
-                    <div id="audiobookProgress" style="height:100%;width:0%;background:rgba(0,245,255,0.7);border-radius:99px;transition:width 0.3s"></div>
+                  <div style="flex:1;height:2px;background:rgba(212,184,168,0.15);border-radius:99px;min-width:60px">
+                    <div id="audiobookProgress" style="height:100%;width:0%;background:rgba(212,184,168,0.7);border-radius:99px;transition:width 0.3s"></div>
                   </div>
-                  <span id="audiobookTime" class="font-mono text-[9px]" style="color:rgba(0,245,255,0.4)">0:00</span>
+                  <span id="audiobookTime" class="font-mono text-[9px]" style="color:rgba(212,184,168,0.4)">0:00</span>
                   <!-- Pausa / Ferma -->
-                  <button id="btnAudiobookPause" class="font-mono text-[9px] tracking-wider uppercase px-2 py-1 rounded btn-ghost" style="color:rgba(0,245,255,0.6)" data-i18n="audiobook_pause">Pausa</button>
+                  <button id="btnAudiobookPause" class="font-mono text-[9px] tracking-wider uppercase px-2 py-1 rounded btn-ghost" style="color:rgba(212,184,168,0.6)" data-i18n="audiobook_pause">Pausa</button>
                   <button id="btnAudiobookStop"  class="font-mono text-[9px] tracking-wider uppercase px-2 py-1 rounded btn-danger"  style="color:rgba(255,45,85,0.6)"  data-i18n="audiobook_stop">Stop</button>
                 </div>
               </div>
-              <div class="h-px" style="background:linear-gradient(90deg,transparent,rgba(0,245,255,0.5),rgba(124,58,237,0.5),transparent)"></div>
+              <div class="h-px" style="background:linear-gradient(90deg,transparent,rgba(212,184,168,0.5),rgba(124,58,237,0.5),transparent)"></div>
               <div id="bookContent" class="flex-1 overflow-y-auto px-6 py-6" style="background:linear-gradient(180deg,rgba(5,8,16,0.97) 0%,rgba(8,13,26,0.99) 100%)"></div>
-              <div class="py-3 flex items-center justify-center gap-3 glass-dark border-t border-white/5 flex-shrink-0"><div class="w-8 h-px" style="background:linear-gradient(90deg,transparent,rgba(0,245,255,0.4))"></div><div class="w-1 h-1 rounded-full" style="background:rgba(0,245,255,0.5);box-shadow:0 0 6px rgba(0,245,255,0.8)"></div><div class="w-8 h-px" style="background:linear-gradient(90deg,rgba(0,245,255,0.4),transparent)"></div></div>
+              <div class="py-3 flex items-center justify-center gap-3 glass-dark border-t border-white/5 flex-shrink-0"><div class="w-8 h-px" style="background:linear-gradient(90deg,transparent,rgba(212,184,168,0.4))"></div><div class="w-1 h-1 rounded-full" style="background:rgba(212,184,168,0.5);box-shadow:0 0 6px rgba(212,184,168,0.8)"></div><div class="w-8 h-px" style="background:linear-gradient(90deg,rgba(212,184,168,0.4),transparent)"></div></div>
             </div>
           </div>
 
           <!-- PANEL: SETTINGS -->
           <div id="panelSettings" class="panel-screen hidden bg-cosmos overflow-y-auto">
             <div class="max-w-xl mx-auto px-6 py-8">
-              <div class="mb-8"><div class="flex items-center gap-3 mb-1"><div class="w-8 h-8 rounded-lg btn-neon flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(0,245,255,0.9)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div><h1 class="font-display text-2xl font-700 tracking-wider neon-cyan" data-i18n="settings_title">Impostazioni</h1></div><p class="font-mono text-[10px] tracking-[0.2em] uppercase" style="color:rgba(0,245,255,0.35)" data-i18n="settings_subtitle">Personalizza la tua esperienza Legacy</p></div>
+              <div class="mb-8"><div class="flex items-center gap-3 mb-1"><div class="w-8 h-8 rounded-lg btn-neon flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(212,184,168,0.9)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div><h1 class="font-display text-2xl font-700 tracking-wider neon-cyan" data-i18n="settings_title">Impostazioni</h1></div><p class="font-mono text-[10px] tracking-[0.2em] uppercase" style="color:rgba(212,184,168,0.35)" data-i18n="settings_subtitle">Personalizza la tua esperienza Legacy</p></div>
               <div class="mb-8">
                 <div class="settings-section-title" data-i18n="settings_section_experience">Esperienza</div>
                 <div class="space-y-3">
@@ -2159,9 +2159,9 @@
               <div class="mb-8">
                                 <div class="settings-section-title" data-i18n="settings_section_account">Account</div>
                 <div class="space-y-3">
-                  <div class="settings-row"><div><div class="settings-row-label">Email</div><div id="settingsEmail" class="settings-row-sub font-mono" style="color:rgba(0,245,255,0.5)">—</div></div><div class="w-2 h-2 rounded-full" style="background:rgba(0,245,255,0.5);box-shadow:0 0 6px rgba(0,245,255,0.6)"></div></div>
-                  <div class="settings-row"><div><div class="settings-row-label">Password</div><div class="settings-row-sub"><span data-i18n="settings_password_sub">Aggiorna le credenziali</span></div></div><button id="btnChangePassword" class="btn-ghost px-4 py-2 rounded-lg font-mono text-[11px] tracking-wider uppercase" style="color:rgba(0,245,255,0.7)" data-i18n="settings_change_pw">Cambia</button></div>
-                  <div id="passwordFeedback" class="font-mono text-[11px] text-center hidden" style="color:rgba(0,245,255,0.7)"></div>
+                  <div class="settings-row"><div><div class="settings-row-label">Email</div><div id="settingsEmail" class="settings-row-sub font-mono" style="color:rgba(212,184,168,0.5)">—</div></div><div class="w-2 h-2 rounded-full" style="background:rgba(212,184,168,0.5);box-shadow:0 0 6px rgba(212,184,168,0.6)"></div></div>
+                  <div class="settings-row"><div><div class="settings-row-label">Password</div><div class="settings-row-sub"><span data-i18n="settings_password_sub">Aggiorna le credenziali</span></div></div><button id="btnChangePassword" class="btn-ghost px-4 py-2 rounded-lg font-mono text-[11px] tracking-wider uppercase" style="color:rgba(212,184,168,0.7)" data-i18n="settings_change_pw">Cambia</button></div>
+                  <div id="passwordFeedback" class="font-mono text-[11px] text-center hidden" style="color:rgba(212,184,168,0.7)"></div>
                 </div>
               </div>
               <div><div class="settings-section-title" style="color:rgba(255,45,85,0.45)"><span data-i18n="settings_danger_zone">Zona Pericolosa</span></div><div class="glass-card rounded-xl p-4" style="border-color:rgba(255,45,85,0.15)"><div class="flex items-center justify-between gap-4"><div><div class="font-mono text-sm" style="color:rgba(255,45,85,0.8)"><span data-i18n="settings_delete_label">Elimina Account</span></div><div class="font-mono text-[11px] mt-0.5" style="color:rgba(255,255,255,0.3)"><span data-i18n="settings_delete_sub">Azione irreversibile. Tutti i dati verranno persi.</span></div></div><button id="btnDeleteAccount" class="btn-danger px-4 py-2 rounded-lg font-mono text-[11px] tracking-wider uppercase flex-shrink-0" style="color:rgba(255,45,85,0.8)" data-i18n="settings_delete_btn">Elimina</button></div></div></div>
