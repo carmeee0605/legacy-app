@@ -1830,7 +1830,7 @@
 
       <!-- SIDEBAR -->
       <aside id="sidebar" class="h-screen flex flex-col glass-dark border-r border-white/5 relative z-50">
-        <div class="flex items-center gap-2.5 px-5 py-5 border-b border-white/5"><div class="w-7 h-7 rounded-lg btn-neon flex items-center justify-center flex-shrink-0"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(0,245,255,0.9)" stroke-width="2" stroke-linecap="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg></div><span class="font-display font-700 tracking-widest text-sm neon-cyan">LEGACY</span><button onclick="toggleSidebar(false)" class="ml-auto md:hidden text-white/30 hover:text-white/60"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+        <div class="flex items-center gap-2.5 px-5 py-5 border-b border-white/5"><div class="w-7 h-7 rounded-lg btn-neon flex items-center justify-center flex-shrink-0"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(0,245,255,0.9)" stroke-width="2" stroke-linecap="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg></div><span id="logoSidebar" class="font-display font-700 tracking-widest text-sm neon-cyan" style="cursor:pointer">LEGACY</span><button onclick="toggleSidebar(false)" class="ml-auto md:hidden text-white/30 hover:text-white/60"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
         <div class="px-4 py-4"><button id="btnNewInterview" class="w-full btn-neon rounded-xl py-2.5 px-4 flex items-center justify-center gap-2 text-xs font-display tracking-[0.12em] uppercase text-white/90"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Nuova Intervista</button></div>
 
         <div class="flex-1 overflow-hidden flex flex-col px-4"><div class="font-mono text-[9px] tracking-[0.25em] uppercase mb-2 px-1" style="color:rgba(255,255,255,0.25)" data-i18n="sidebar_my_stories">Le mie Storie</div><div id="storiesList" class="flex-1 overflow-y-auto space-y-1"><div class="font-mono text-[10px] px-2 py-3 text-center" style="color:rgba(255,255,255,0.2)">Caricamento…</div></div></div>
@@ -1844,7 +1844,7 @@
       <main class="flex-1 flex flex-col min-w-0 relative overflow-hidden" style="max-width:100%;min-width:0">
         <div class="md:hidden flex items-center justify-between px-4 py-3 glass-dark border-b border-white/5 z-20 relative flex-shrink-0">
           <button onclick="toggleSidebar(true)" class="p-2 btn-ghost rounded-lg"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
-          <span class="font-display text-sm font-700 tracking-widest neon-cyan">LEGACY</span>
+          <span id="logoMobile" class="font-display text-sm font-700 tracking-widest neon-cyan" style="cursor:pointer">LEGACY</span>
           <div class="w-8"></div>
         </div>
 

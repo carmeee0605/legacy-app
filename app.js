@@ -108,6 +108,8 @@ const btnRegisterSpinner = document.getElementById('btnRegisterSpinner');
 // ── DOM — Sidebar ─────────────────────────
 const btnNewInterview  = document.getElementById('btnNewInterview');
 const btnSidebarLogout = document.getElementById('btnSidebarLogout');
+const logoMobile       = document.getElementById('logoMobile');
+const logoSidebar      = document.getElementById('logoSidebar');
 const sidebarSettings  = document.getElementById('sidebarSettings');
 const storiesList      = document.getElementById('storiesList');
 
@@ -2203,6 +2205,18 @@ sidebarSettings?.addEventListener('click', () => {
 });
 
 btnSidebarLogout?.addEventListener('click', async () => {
+
+// ── Logo → Home ───────────────────────────────────────────────────────────────
+function goHome() {
+  stopCurrentAudio();
+  stopAudiobook();
+  toggleSidebar(false);
+  SESSION_ID = null;
+  localStorage.removeItem(LS_LAST_SESSION);
+  showEmptyState();
+}
+logoMobile?.addEventListener('click', goHome);
+logoSidebar?.addEventListener('click', goHome);
   if (!confirm('Vuoi uscire?')) return;
   stopCurrentAudio();
   sessionStorage.clear();
