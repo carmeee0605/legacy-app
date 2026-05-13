@@ -814,7 +814,7 @@ async function loadSessions() {
 function renderSessionsList(sessions) {
   if (!storiesList) return;
   if (sessions.length === 0) {
-    storiesList.innerHTML = `<div class="font-mono text-[10px] px-2 py-3 text-center" style="color:rgba(255,255,255,0.2)">${t('stories_empty')}</div>`;
+    storiesList.innerHTML = `<div class="font-mono text-[10px] px-2 py-3 text-center" style="color:#A1A1AA">${t('stories_empty')}</div>`;
     return;
   }
   storiesList.innerHTML = sessions.map(s => {
