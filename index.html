@@ -73,13 +73,19 @@
     .btn-neon{background:#FAFAFA;border:none;box-shadow:none;transition:all 0.2s ease;cursor:pointer;color:#09090B !important}
     .btn-neon:hover{background:#E4E4E7;box-shadow:none}
     .btn-neon:active{transform:scale(0.97)}
-    /* Logo box: contenitore trasparente, icona bianca */
-    .logo-box {
+
+    /* Contenitori logo/icona: trasparenti, mai bianchi */
+    .logo-box,
+    nav .logo-box,
+    footer .logo-box,
+    .logo-icon-wrap {
       background: transparent !important;
+      background-color: transparent !important;
       border: 1px solid rgba(250,250,250,0.15) !important;
       box-shadow: none !important;
     }
-    .logo-box svg {
+    .logo-box svg,
+    .logo-icon-wrap svg {
       stroke: #FAFAFA !important;
       fill: none !important;
     }
@@ -1258,8 +1264,8 @@
       <!-- NAV -->
       <nav class="sticky top-0 z-20 flex items-center justify-between px-6 py-4 glass-dark border-b border-white/5">
         <div class="flex items-center gap-2.5">
-          <div class="w-7 h-7 rounded-lg btn-neon flex items-center justify-center flex-shrink-0">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(250,250,250,0.9)" stroke-width="2" stroke-linecap="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg>
+          <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 logo-icon-wrap">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#FAFAFA" stroke-width="2" stroke-linecap="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg>
           </div>
           <span class="font-display font-700 tracking-widest text-sm neon-cyan">LEGACY</span>
         </div>
@@ -1661,8 +1667,8 @@
       <footer class="px-6 py-7 border-t border-white/5">
         <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div class="flex items-center gap-2.5">
-            <div class="w-6 h-6 rounded-lg btn-neon flex items-center justify-center flex-shrink-0">
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="rgba(250,250,250,0.9)" stroke-width="2" stroke-linecap="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg>
+            <div class="w-6 h-6 rounded-lg flex items-center justify-center flex-shrink-0 logo-icon-wrap">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#FAFAFA" stroke-width="2" stroke-linecap="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg>
             </div>
             <span class="font-display font-700 tracking-widest text-sm neon-cyan">LEGACY</span>
             <span class="font-mono text-[10px]" style="color:rgba(255,255,255,0.2)">— Eredità Viva</span>
@@ -1684,7 +1690,7 @@
     <div class="min-h-screen flex items-center justify-center px-6 py-16 relative">
       <button id="btnAuthBack" class="fixed top-6 left-6 flex items-center gap-2 font-mono text-[11px] tracking-wider uppercase btn-ghost px-4 py-2 rounded-xl" style="color:rgba(255,255,255,0.4)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg><span data-i18n="btn_back_auth">Indietro</span></button>
       <div class="w-full max-w-sm">
-        <div class="text-center mb-8"><div class="w-12 h-12 mx-auto rounded-2xl logo-box flex items-center justify-center mb-4" style="background:transparent;border:1px solid rgba(250,250,250,0.15)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FAFAFA" stroke-width="1.5" stroke-linecap="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div><h1 class="font-display text-3xl font-800 tracking-wider neon-cyan">LEGACY</h1><p class="font-mono text-[10px] tracking-[0.3em] uppercase mt-1" style="color:rgba(250,250,250,0.45)">EREDITÀ VIVA</p></div>
+        <div class="text-center mb-8"><div class="w-12 h-12 mx-auto rounded-2xl flex items-center justify-center mb-4 logo-icon-wrap"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FAFAFA" stroke-width="1.5" stroke-linecap="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div><h1 class="font-display text-3xl font-800 tracking-wider neon-cyan">LEGACY</h1><p class="font-mono text-[10px] tracking-[0.3em] uppercase mt-1" style="color:rgba(250,250,250,0.45)">EREDITÀ VIVA</p></div>
         <div class="glass-card rounded-2xl p-6">
 
           <!-- Tab Accedi / Crea Account -->
@@ -1823,8 +1829,8 @@
 
       <!-- SIDEBAR -->
       <aside id="sidebar" class="h-screen flex flex-col glass-dark border-r border-white/5 relative z-50">
-        <div class="flex items-center gap-2.5 px-5 py-5 border-b border-white/5"><div class="w-7 h-7 rounded-lg logo-box flex items-center justify-center flex-shrink-0" style="background:transparent;border:1px solid rgba(250,250,250,0.15)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FAFAFA" stroke-width="2" stroke-linecap="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg></div><span id="logoSidebar" class="font-display font-700 tracking-widest text-sm neon-cyan" style="cursor:pointer">LEGACY</span><button onclick="toggleSidebar(false)" class="ml-auto md:hidden text-white/30 hover:text-white/60"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
-        <div class="px-4 py-4"><button id="btnNewInterview" class="w-full btn-neon rounded-xl py-2.5 px-4 flex items-center justify-center gap-2 text-xs font-display tracking-[0.12em] uppercase text-white/90"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Nuova Intervista</button></div>
+        <div class="flex items-center gap-2.5 px-5 py-5 border-b border-white/5"><div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 logo-icon-wrap"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FAFAFA" stroke-width="2" stroke-linecap="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg></div><span id="logoSidebar" class="font-display font-700 tracking-widest text-sm neon-cyan" style="cursor:pointer">LEGACY</span><button onclick="toggleSidebar(false)" class="ml-auto md:hidden text-white/30 hover:text-white/60"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+        <div class="px-4 py-4"><button id="btnNewInterview" class="w-full btn-neon rounded-xl py-2.5 px-4 flex items-center justify-center gap-2 text-xs font-display tracking-[0.12em] uppercase text-white/90"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg><span data-i18n="sidebar_new_chat">Nuova Chat</span></button></div>
 
         <div class="flex-1 overflow-hidden flex flex-col px-4"><div class="font-mono text-[9px] tracking-[0.25em] uppercase mb-2 px-1" style="color:#A1A1AA;font-weight:500" data-i18n="sidebar_my_stories">Le mie Storie</div><div id="storiesList" class="flex-1 overflow-y-auto space-y-1"><div class="font-mono text-[10px] px-2 py-3 text-center" style="color:#A1A1AA">Caricamento…</div></div></div>
         <div class="px-4 pb-5 pt-3 border-t border-white/5 space-y-1">
