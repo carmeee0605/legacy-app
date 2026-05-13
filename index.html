@@ -73,6 +73,16 @@
     .btn-neon{background:#FAFAFA;border:none;box-shadow:none;transition:all 0.2s ease;cursor:pointer;color:#09090B !important}
     .btn-neon:hover{background:#E4E4E7;box-shadow:none}
     .btn-neon:active{transform:scale(0.97)}
+    /* Logo box: contenitore trasparente, icona bianca */
+    .logo-box {
+      background: transparent !important;
+      border: 1px solid rgba(250,250,250,0.15) !important;
+      box-shadow: none !important;
+    }
+    .logo-box svg {
+      stroke: #FAFAFA !important;
+      fill: none !important;
+    }
     .btn-violet{background:transparent;border:1px solid #27272A;transition:all 0.2s ease;cursor:pointer;color:#A1A1AA}
     .btn-violet:hover{background:#18181B;border-color:#3F3F46;color:#FAFAFA}
     .btn-violet:active{transform:scale(0.97)}
@@ -151,6 +161,8 @@
     .story-item{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:6px;font-size:0.73rem;font-family:'Inter',sans-serif;color:rgba(250,250,250,0.35);cursor:pointer;border:1px solid transparent;transition:all 0.2s ease}
     .story-item:hover{background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.65);border-color:rgba(255,255,255,0.06)}
     .story-item.active{background:rgba(250,250,250,0.05);color:#FAFAFA;border-color:#27272A}
+    /* Testo placeholder sidebar */
+    #storiesList .text-center { color: #A1A1AA !important; font-family:'Inter',sans-serif; }
     .btn-rename{display:flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:5px;border:none;background:transparent;cursor:pointer;opacity:0;transition:all 0.2s ease;flex-shrink:0}
     .story-item:hover .btn-rename{opacity:1}
     .btn-rename:hover{background:rgba(250,250,250,0.06)}
@@ -389,8 +401,7 @@
     .trust-icon { width:18px; height:18px; flex-shrink:0; }
 
     /* Gradient title */
-    .gradient-title { color:#FAFAFA;-webkit-text-fill-color:#FAFAFA;background:none;
-      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .gradient-title { color:#FAFAFA !important;-webkit-text-fill-color:#FAFAFA !important;background:none !important;font-family:'Playfair Display',Georgia,serif; }
 
     .cta-glow { box-shadow: 0 0 0 1px rgba(161,161,170,0.3), 0 0 40px rgba(39,39,42,0.18), 0 8px 32px rgba(0,0,0,0.4); }
     .cta-glow:hover { box-shadow: 0 0 0 1px rgba(250,250,250,0.6), 0 0 60px rgba(161,161,170,0.3), 0 8px 40px rgba(0,0,0,0.5); }
@@ -1673,7 +1684,7 @@
     <div class="min-h-screen flex items-center justify-center px-6 py-16 relative">
       <button id="btnAuthBack" class="fixed top-6 left-6 flex items-center gap-2 font-mono text-[11px] tracking-wider uppercase btn-ghost px-4 py-2 rounded-xl" style="color:rgba(255,255,255,0.4)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg><span data-i18n="btn_back_auth">Indietro</span></button>
       <div class="w-full max-w-sm">
-        <div class="text-center mb-8"><div class="w-12 h-12 mx-auto rounded-2xl btn-neon flex items-center justify-center mb-4"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(250,250,250,0.9)" stroke-width="1.5" stroke-linecap="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div><h1 class="font-display text-3xl font-800 tracking-wider neon-cyan">LEGACY</h1><p class="font-mono text-[10px] tracking-[0.3em] uppercase mt-1" style="color:rgba(250,250,250,0.45)">EREDITÀ VIVA</p></div>
+        <div class="text-center mb-8"><div class="w-12 h-12 mx-auto rounded-2xl logo-box flex items-center justify-center mb-4" style="background:transparent;border:1px solid rgba(250,250,250,0.15)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FAFAFA" stroke-width="1.5" stroke-linecap="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div><h1 class="font-display text-3xl font-800 tracking-wider neon-cyan">LEGACY</h1><p class="font-mono text-[10px] tracking-[0.3em] uppercase mt-1" style="color:rgba(250,250,250,0.45)">EREDITÀ VIVA</p></div>
         <div class="glass-card rounded-2xl p-6">
 
           <!-- Tab Accedi / Crea Account -->
@@ -1812,10 +1823,10 @@
 
       <!-- SIDEBAR -->
       <aside id="sidebar" class="h-screen flex flex-col glass-dark border-r border-white/5 relative z-50">
-        <div class="flex items-center gap-2.5 px-5 py-5 border-b border-white/5"><div class="w-7 h-7 rounded-lg btn-neon flex items-center justify-center flex-shrink-0"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(250,250,250,0.9)" stroke-width="2" stroke-linecap="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg></div><span id="logoSidebar" class="font-display font-700 tracking-widest text-sm neon-cyan" style="cursor:pointer">LEGACY</span><button onclick="toggleSidebar(false)" class="ml-auto md:hidden text-white/30 hover:text-white/60"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+        <div class="flex items-center gap-2.5 px-5 py-5 border-b border-white/5"><div class="w-7 h-7 rounded-lg logo-box flex items-center justify-center flex-shrink-0" style="background:transparent;border:1px solid rgba(250,250,250,0.15)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FAFAFA" stroke-width="2" stroke-linecap="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg></div><span id="logoSidebar" class="font-display font-700 tracking-widest text-sm neon-cyan" style="cursor:pointer">LEGACY</span><button onclick="toggleSidebar(false)" class="ml-auto md:hidden text-white/30 hover:text-white/60"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
         <div class="px-4 py-4"><button id="btnNewInterview" class="w-full btn-neon rounded-xl py-2.5 px-4 flex items-center justify-center gap-2 text-xs font-display tracking-[0.12em] uppercase text-white/90"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Nuova Intervista</button></div>
 
-        <div class="flex-1 overflow-hidden flex flex-col px-4"><div class="font-mono text-[9px] tracking-[0.25em] uppercase mb-2 px-1" style="color:rgba(255,255,255,0.25)" data-i18n="sidebar_my_stories">Le mie Storie</div><div id="storiesList" class="flex-1 overflow-y-auto space-y-1"><div class="font-mono text-[10px] px-2 py-3 text-center" style="color:rgba(255,255,255,0.2)">Caricamento…</div></div></div>
+        <div class="flex-1 overflow-hidden flex flex-col px-4"><div class="font-mono text-[9px] tracking-[0.25em] uppercase mb-2 px-1" style="color:#A1A1AA;font-weight:500" data-i18n="sidebar_my_stories">Le mie Storie</div><div id="storiesList" class="flex-1 overflow-y-auto space-y-1"><div class="font-mono text-[10px] px-2 py-3 text-center" style="color:#A1A1AA">Caricamento…</div></div></div>
         <div class="px-4 pb-5 pt-3 border-t border-white/5 space-y-1">
           <div id="sidebarSettings" class="sidebar-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg><span data-i18n="sidebar_settings">Impostazioni</span></div>
           <div id="btnSidebarLogout" class="sidebar-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,45,85,0.7)" stroke-width="2" stroke-linecap="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg><span style="color:rgba(255,45,85,0.7)" data-i18n="sidebar_logout">Esci</span></div>
@@ -1842,8 +1853,8 @@
             </div>
 
             <!-- Logo -->
-            <div class="relative w-20 h-20 mx-auto mb-8 flex items-center justify-center rounded-2xl btn-neon"
-              style="box-shadow:0 0 40px rgba(39,39,42,0.18)">
+            <div class="relative w-20 h-20 mx-auto mb-8 flex items-center justify-center rounded-2xl logo-box"
+              style="background:transparent;border:1px solid rgba(250,250,250,0.15);box-shadow:none">
               <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="rgba(250,250,250,0.9)" stroke-width="1.4" stroke-linecap="round">
                 <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
                 <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
@@ -1854,11 +1865,11 @@
 
             <!-- Titolo + sottotitolo -->
             <h2 class="font-display font-800 text-center mb-3 relative"
-              style="font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.02em;line-height:1.1">
-              <span data-i18n="onboarding_title" class="gradient-title">Benvenuto su Legacy.</span>
+              style="font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.02em;line-height:1.1;color:#FAFAFA;font-family:'Playfair Display',Georgia,serif">
+              <span data-i18n="onboarding_title">Benvenuto su Legacy.</span>
             </h2>
-            <p class="font-mono text-sm text-center max-w-sm mb-10 leading-relaxed relative"
-              style="color:rgba(200,210,255,0.5)" data-i18n="onboarding_sub">
+            <p class="text-sm text-center max-w-sm mb-10 leading-relaxed relative"
+              style="color:#A1A1AA;font-family:'Inter',sans-serif" data-i18n="onboarding_sub">
               Scegli un percorso e inizia a trasformare i tuoi ricordi in un'eredità senza tempo.
             </p>
 
@@ -1886,8 +1897,8 @@
               <div style="position:absolute;top:30%;left:50%;transform:translateX(-50%);width:480px;height:480px;background:radial-gradient(circle,rgba(39,39,42,0.06) 0%,transparent 65%);border-radius:50%"></div>
             </div>
 
-            <div class="relative w-20 h-20 mx-auto mb-8 flex items-center justify-center rounded-2xl btn-neon"
-              style="box-shadow:0 0 40px rgba(39,39,42,0.18)">
+            <div class="relative w-20 h-20 mx-auto mb-8 flex items-center justify-center rounded-2xl logo-box"
+              style="background:transparent;border:1px solid rgba(250,250,250,0.15);box-shadow:none">
               <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="rgba(250,250,250,0.9)" stroke-width="1.4" stroke-linecap="round">
                 <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
                 <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
@@ -1897,11 +1908,11 @@
             </div>
 
             <h2 class="font-display font-800 text-center mb-3 relative"
-              style="font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.02em;line-height:1.1">
-              <span data-i18n="onboarding_title" class="gradient-title">Benvenuto su Legacy.</span>
+              style="font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.02em;line-height:1.1;color:#FAFAFA;font-family:'Playfair Display',Georgia,serif">
+              <span data-i18n="onboarding_title">Benvenuto su Legacy.</span>
             </h2>
-            <p class="font-mono text-sm text-center max-w-sm mb-10 leading-relaxed relative"
-              style="color:rgba(200,210,255,0.5)" data-i18n="onboarding_sub">
+            <p class="text-sm text-center max-w-sm mb-10 leading-relaxed relative"
+              style="color:#A1A1AA;font-family:'Inter',sans-serif" data-i18n="onboarding_sub">
               Scegli un percorso e inizia a trasformare i tuoi ricordi in un'eredità senza tempo.
             </p>
 
