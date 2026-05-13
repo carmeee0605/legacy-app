@@ -1017,6 +1017,11 @@ window.selectPathType = function(type) {
 };
 
 btnNewInterview?.addEventListener('click', async () => {
+  // Se l'utente è in Impostazioni o in un panel secondario → torna all'empty state
+  stopCurrentAudio();
+  stopAudiobook();
+  toggleSidebar(false);
+
   // Paywall: free può avere max 1 sessione
   if (userSubscription === 'free') {
     const sessions = await loadSessions();
@@ -1025,7 +1030,8 @@ btnNewInterview?.addEventListener('click', async () => {
       return;
     }
   }
-  openNewInterviewModal();
+  // Apri direttamente la selezione percorso (bypassa empty state)
+  openPathSelectionModal();
 });
 window.closeNewInterviewModal = function(event) {
   if (event && event.target !== modalNewInterview) return;
