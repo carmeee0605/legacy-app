@@ -1145,6 +1145,7 @@ const translations = {
     auth_register_btn:    'Crea Account',
     // Sidebar
     sidebar_new_interview:'Nuova Intervista',
+    sidebar_new_chat:      'Nuova Chat',
     sidebar_interview:    'Intervista',
     sidebar_my_stories:   'Le mie Storie',
     sidebar_settings:     'Impostazioni',
@@ -1408,6 +1409,7 @@ const translations = {
     auth_register_btn:    'Create Account',
     // Sidebar
     sidebar_new_interview:'New Interview',
+    sidebar_new_chat:      'New Chat',
     sidebar_interview:    'Interview',
     sidebar_my_stories:   'My Stories',
     sidebar_settings:     'Settings',
