@@ -1017,7 +1017,6 @@ window.selectPathType = function(type) {
 };
 
 btnNewInterview?.addEventListener('click', async () => {
-  // Se l'utente è in Impostazioni o in un panel secondario → torna all'empty state
   stopCurrentAudio();
   stopAudiobook();
   toggleSidebar(false);
@@ -1030,8 +1029,11 @@ btnNewInterview?.addEventListener('click', async () => {
       return;
     }
   }
-  // Apri direttamente la selezione percorso (bypassa empty state)
-  openPathSelectionModal();
+
+  // Mostra la schermata principale di benvenuto con i percorsi
+  SESSION_ID = null;
+  localStorage.removeItem(LS_LAST_SESSION);
+  showEmptyState();
 });
 window.closeNewInterviewModal = function(event) {
   if (event && event.target !== modalNewInterview) return;
