@@ -2227,6 +2227,22 @@ function goHome() {
 }
 logoMobile?.addEventListener('click', goHome);
 logoSidebar?.addEventListener('click', goHome);
+
+// ════════════════════════════════════════
+//  PREMIUM COMING SOON MODAL
+// ════════════════════════════════════════
+
+window.togglePremiumModal = function(show) {
+  const modal = document.getElementById('premiumModal');
+  if (!modal) return;
+  modal.style.display = show ? 'flex' : 'none';
+  if (show) toggleSidebar(false);
+};
+
+// Chiudi con Escape
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') togglePremiumModal(false);
+});
   if (!confirm('Vuoi uscire?')) return;
   stopCurrentAudio();
   sessionStorage.clear();
