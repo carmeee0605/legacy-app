@@ -4,13 +4,5 @@
     { "src": "*.js", "use": "@vercel/static" },
     { "src": "*.css", "use": "@vercel/static" },
     { "src": "sounds/**", "use": "@vercel/static" }
-  ],
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        { "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" }
-      ]
-    }
   ]
 }
