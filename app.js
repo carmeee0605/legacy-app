@@ -2215,6 +2215,13 @@ sidebarSettings?.addEventListener('click', () => {
 });
 
 btnSidebarLogout?.addEventListener('click', async () => {
+  if (!confirm('Vuoi uscire?')) return;
+  stopCurrentAudio();
+  sessionStorage.clear();
+  localStorage.removeItem(LS_LAST_SESSION);
+  await sbClient.auth.signOut();
+  window.location.reload();
+});
 
 // ── Logo → Home ───────────────────────────────────────────────────────────────
 function goHome() {
@@ -2239,16 +2246,8 @@ window.togglePremiumModal = function(show) {
   if (show) toggleSidebar(false);
 };
 
-// Chiudi con Escape
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') togglePremiumModal(false);
-});
-  if (!confirm('Vuoi uscire?')) return;
-  stopCurrentAudio();
-  sessionStorage.clear();
-  localStorage.removeItem(LS_LAST_SESSION);
-  await sbClient.auth.signOut();
-  window.location.reload();
 });
 
 // ════════════════════════════════════════
