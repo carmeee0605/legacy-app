@@ -4,6 +4,9 @@
    + Fumetti con foto in chat
    + Invio image_file al backend
    + Ripristino cronologia con immagini
+   + Stripe Payment Links
+   + Settings Modal completo
+   Build: 2026-05-19
 ───────────────────────────────────────── */
 
 'use strict';
