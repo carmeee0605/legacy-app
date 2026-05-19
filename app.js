@@ -2212,40 +2212,19 @@ window.choosePlan = function(plan) {
 sidebarSettings?.addEventListener('click', () => {
   stopCurrentAudio();
   stopAudiobook();
-  toggleSettingsModal(true);
+  showPanel('settings');
 });
 
 // ════════════════════════════════════════
-//  SETTINGS MODAL
+//  CUSTOMER PORTAL (Stripe)
 // ════════════════════════════════════════
-
-window.toggleSettingsModal = function(show) {
-  const modal = document.getElementById('settingsModal');
-  if (!modal) return;
-  modal.style.display = show ? 'flex' : 'none';
-  if (show) {
-    toggleSidebar(false);
-    // Sincronizza valori correnti
-    const voice   = document.getElementById('settingsVoice');
-    const ambient = document.getElementById('settingsAmbient');
-    const lang    = document.getElementById('settingsLanguage');
-    const auto_   = document.getElementById('settingsAutoplay');
-    if (voice)   voice.value    = selectedVoice    || 'shimmer';
-    if (ambient) ambient.value  = selectedAmbient  || 'none';
-    if (lang)    lang.value     = currentLang      || 'it';
-    if (auto_)   auto_.checked  = autoplayEnabled  !== false;
-  }
-};
 
 window.openCustomerPortal = function() {
   window.open('https://billing.stripe.com/p/login/test_eVqeVefZMc3geQB9dH8so00', '_blank');
 };
 
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') {
-    toggleSettingsModal(false);
-    togglePremiumModal(false);
-  }
+  if (e.key === 'Escape') togglePremiumModal(false);
 });
 
 btnSidebarLogout?.addEventListener('click', async () => {
