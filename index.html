@@ -2235,6 +2235,83 @@
     </div>
   </div>
 
+  <!-- ══ SETTINGS MODAL ══ -->
+  <div id="settingsModal" onclick="if(event.target===this)toggleSettingsModal(false)" style="display:none;position:fixed;inset:0;z-index:600;background:rgba(0,0,0,0.75);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:20px">
+    <div style="width:100%;max-width:480px;background:#18181B;border:1px solid #27272A;border-radius:20px;overflow:hidden;animation:modal-in 0.3s cubic-bezier(0.22,1,0.36,1) forwards">
+
+      <!-- Header -->
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:24px 28px 20px;border-bottom:1px solid #27272A">
+        <h2 style="font-family:'Playfair Display',Georgia,serif;font-size:1.25rem;font-weight:700;color:#FAFAFA;margin:0">Impostazioni Account</h2>
+        <button onclick="toggleSettingsModal(false)" style="background:none;border:none;cursor:pointer;color:rgba(255,255,255,0.3);transition:color 0.2s;line-height:1" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.3)'">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Body -->
+      <div style="padding:24px 28px 28px;display:flex;flex-direction:column;gap:20px">
+
+        <!-- Voce IA -->
+        <div>
+          <div style="font-family:'Inter',sans-serif;font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:#A1A1AA;margin-bottom:12px;display:flex;align-items:center;gap:8px">Esperienza<span style="flex:1;height:1px;background:linear-gradient(90deg,#27272A,transparent)"></span></div>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;border-radius:12px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06)">
+            <div>
+              <div style="font-family:'Inter',sans-serif;font-size:0.8rem;color:rgba(255,255,255,0.7)">Voce dell'IA</div>
+              <div style="font-family:'Inter',sans-serif;font-size:0.68rem;color:rgba(255,255,255,0.3);margin-top:2px">Seleziona la voce per le risposte</div>
+            </div>
+            <div style="position:relative">
+              <select id="settingsVoiceModal" onchange="settingsVoice && (settingsVoice.value=this.value); selectedVoice=this.value; localStorage.setItem('legacy_voice',this.value)" style="padding:8px 28px 8px 12px;border-radius:8px;background:rgba(250,250,250,0.04);border:1px solid #27272A;color:#FAFAFA;font-family:'Inter',sans-serif;font-size:0.8rem;outline:none;appearance:none;cursor:pointer;min-width:130px">
+                <option value="shimmer">Shimmer — Calda</option>
+                <option value="onyx">Onyx — Profonda</option>
+                <option value="nova">Nova — Vivace</option>
+                <option value="alloy">Alloy — Neutrale</option>
+              </select>
+              <span style="position:absolute;right:10px;top:50%;transform:translateY(-50%);color:rgba(250,250,250,0.5);font-size:0.7rem;pointer-events:none">▾</span>
+            </div>
+          </div>
+
+          <!-- Lingua -->
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;border-radius:12px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);margin-top:8px">
+            <div>
+              <div style="font-family:'Inter',sans-serif;font-size:0.8rem;color:rgba(255,255,255,0.7)">Lingua</div>
+              <div style="font-family:'Inter',sans-serif;font-size:0.68rem;color:rgba(255,255,255,0.3);margin-top:2px">Cambia la lingua dell'interfaccia</div>
+            </div>
+            <div style="position:relative">
+              <select id="settingsLangModal" onchange="cambiaLingua(this.value)" style="padding:8px 28px 8px 12px;border-radius:8px;background:rgba(250,250,250,0.04);border:1px solid #27272A;color:#FAFAFA;font-family:'Inter',sans-serif;font-size:0.8rem;outline:none;appearance:none;cursor:pointer;min-width:130px">
+                <option value="it">🇮🇹 Italiano</option>
+                <option value="en">🇬🇧 English</option>
+              </select>
+              <span style="position:absolute;right:10px;top:50%;transform:translateY(-50%);color:rgba(250,250,250,0.5);font-size:0.7rem;pointer-events:none">▾</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gestione Piano -->
+        <div>
+          <div style="font-family:'Inter',sans-serif;font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:#A1A1AA;margin-bottom:12px;display:flex;align-items:center;gap:8px">Gestione Piano<span style="flex:1;height:1px;background:linear-gradient(90deg,#27272A,transparent)"></span></div>
+          <div style="padding:16px;border-radius:12px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06)">
+            <p style="font-family:'Inter',sans-serif;font-size:0.82rem;color:#A1A1AA;line-height:1.6;margin-bottom:14px">Gestisci il tuo abbonamento, aggiorna il metodo di pagamento o scarica le fatture dal portale di fatturazione sicuro.</p>
+            <button onclick="openCustomerPortal()" style="width:100%;padding:11px;border-radius:10px;background:#FAFAFA;border:none;cursor:pointer;font-family:'Inter',sans-serif;font-size:0.85rem;font-weight:600;color:#09090B;transition:background 0.2s" onmouseover="this.style.background='#E4E4E7'" onmouseout="this.style.background='#FAFAFA'">
+              Gestisci Abbonamento
+            </button>
+          </div>
+        </div>
+
+        <!-- Account -->
+        <div>
+          <div style="font-family:'Inter',sans-serif;font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:#A1A1AA;margin-bottom:12px;display:flex;align-items:center;gap:8px">Account<span style="flex:1;height:1px;background:linear-gradient(90deg,#27272A,transparent)"></span></div>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;border-radius:12px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06)">
+            <div>
+              <div style="font-family:'Inter',sans-serif;font-size:0.8rem;color:rgba(255,255,255,0.7)">Email</div>
+              <div id="settingsEmailModal" style="font-family:'Inter',sans-serif;font-size:0.68rem;color:rgba(255,255,255,0.4);margin-top:2px">—</div>
+            </div>
+            <div style="width:8px;height:8px;border-radius:50%;background:rgba(250,250,250,0.5)"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <script src="app.js"></script>
   <script>
