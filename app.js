@@ -2258,12 +2258,6 @@ window.startCheckout = async function(planType) {
   const priceId = STRIPE_PRICES[planType];
   if (!priceId) return;
 
-  const btnPro   = document.getElementById('btnCheckoutPro');
-  const btnUltra = document.getElementById('btnCheckoutUltra');
-  const btn      = planType === 'pro' ? btnPro : btnUltra;
-  const origText = btn ? btn.textContent : '';
-  if (btn) { btn.textContent = 'Reindirizzamento…'; btn.disabled = true; }
-
   try {
     const res  = await fetch('https://legacy-backend-wtx4.onrender.com/api/create-checkout-session', {
       method:  'POST',
@@ -2274,17 +2268,8 @@ window.startCheckout = async function(planType) {
     if (!res.ok) throw new Error(data.detail || `HTTP ${res.status}`);
     window.location.href = data.url;
   } catch (err) {
-    console.error('[Legacy] Stripe checkout error:', err);
-    if (btn) { btn.textContent = origText; btn.disabled = false; }
-    // Mostra errore preciso per diagnostica
-    const msg = err.message || 'Errore sconosciuto';
-    const feedback = document.createElement('p');
-    feedback.textContent = '⚠ ' + msg;
-    feedback.style.cssText = 'font-family:Inter,sans-serif;font-size:0.75rem;color:rgba(255,45,85,0.85);text-align:center;margin-top:10px';
-    feedback.id = 'checkoutError';
-    document.getElementById('checkoutError')?.remove();
-    btn?.parentNode?.appendChild(feedback);
-    setTimeout(() => document.getElementById('checkoutError')?.remove(), 8000);
+    console.error('[Legacy] Stripe checkout error:', err.message);
+    window.alert('Errore: ' + err.message);
   }
 };
 
