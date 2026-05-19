@@ -2222,13 +2222,15 @@ window.toggleSettingsModal = function(show) {
   modal.style.display = show ? 'flex' : 'none';
   if (show) {
     toggleSidebar(false);
-    // Sincronizza valori correnti nei select del modal
-    const voiceSel = document.getElementById('settingsVoiceModal');
-    const langSel  = document.getElementById('settingsLangModal');
-    const emailEl  = document.getElementById('settingsEmailModal');
-    if (voiceSel) voiceSel.value = selectedVoice || 'shimmer';
-    if (langSel)  langSel.value  = currentLang  || 'it';
-    if (emailEl && settingsEmail) emailEl.textContent = settingsEmail.textContent || '—';
+    // Sincronizza valori correnti
+    const voice   = document.getElementById('settingsVoice');
+    const ambient = document.getElementById('settingsAmbient');
+    const lang    = document.getElementById('settingsLanguage');
+    const auto_   = document.getElementById('settingsAutoplay');
+    if (voice)   voice.value    = selectedVoice    || 'shimmer';
+    if (ambient) ambient.value  = selectedAmbient  || 'none';
+    if (lang)    lang.value     = currentLang      || 'it';
+    if (auto_)   auto_.checked  = autoplayEnabled  !== false;
   }
 };
 
