@@ -1046,28 +1046,28 @@
         <div class="plan-card" id="planPremium">
           <div class="plan-badge" style="background:rgba(255,200,50,0.15);border:1px solid rgba(255,200,50,0.4);color:rgba(255,210,80,0.9)">Più scelto</div>
           <div class="font-mono text-[9px] tracking-[0.25em] uppercase mb-3" style="color:rgba(255,200,50,0.7)">Premium</div>
-          <div class="font-display text-2xl font-800 mb-1" style="color:rgba(255,210,80,0.9)">€9</div>
+          <div class="font-display text-2xl font-800 mb-1" style="color:rgba(255,210,80,0.9)">€17,99</div>
           <div class="font-mono text-[9px] mb-4" style="color:rgba(255,200,50,0.4)">/mese</div>
           <div class="plan-feat ok">Storie illimitate</div>
           <div class="plan-feat ok">Chat illimitata</div>
           <div class="plan-feat ok">Genera libro PDF</div>
           <div class="plan-feat ok">Audiolibro (voce std)</div>
           <div class="plan-feat no">Clonazione voce</div>
-          <button class="plan-cta plan-cta-gold" onclick="choosePlan('premium')">Scegli Premium</button>
+          <button class="plan-cta plan-cta-gold" onclick="startCheckout('pro')">Legacy PRO — 17,99€</button>
         </div>
 
         <!-- ULTRA -->
         <div class="plan-card" id="planUltra">
           <div class="plan-badge" style="background:rgba(39,39,42,0.15);border:1px solid rgba(250,250,250,0.4);color:rgba(250,250,250,0.9)">Completo</div>
           <div class="font-mono text-[9px] tracking-[0.25em] uppercase mb-3" style="color:rgba(250,250,250,0.7)">Ultra</div>
-          <div class="font-display text-2xl font-800 mb-1" style="color:rgba(250,250,250,0.9)">€19</div>
+          <div class="font-display text-2xl font-800 mb-1" style="color:rgba(250,250,250,0.9)">€54,99</div>
           <div class="font-mono text-[9px] mb-4" style="color:rgba(250,250,250,0.4)">/mese</div>
           <div class="plan-feat ok">Storie illimitate</div>
           <div class="plan-feat ok">Chat illimitata</div>
           <div class="plan-feat ok">Genera libro PDF</div>
           <div class="plan-feat ok">Audiolibro HD</div>
           <div class="plan-feat ok">Clonazione voce IA</div>
-          <button class="plan-cta plan-cta-ultra" onclick="choosePlan('ultra')">Scegli Ultra</button>
+          <button class="plan-cta plan-cta-ultra" onclick="startCheckout('ultra')">Legacy ULTRA — 54,99€</button>
         </div>
 
       </div>
@@ -2185,9 +2185,9 @@
     </div>
   </div>
 
-  <!-- ══ PREMIUM COMING SOON MODAL ══ -->
-  <div id="premiumModal" class="hidden" onclick="if(event.target===this)togglePremiumModal(false)" style="position:fixed;inset:0;z-index:600;background:rgba(0,0,0,0.75);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:20px">
-    <div style="width:100%;max-width:400px;background:#18181B;border:1px solid #27272A;border-radius:20px;padding:36px 32px 28px;position:relative;animation:modal-in 0.3s cubic-bezier(0.22,1,0.36,1) forwards">
+  <!-- ══ PREMIUM MODAL — Selettore Piani ══ -->
+  <div id="premiumModal" onclick="if(event.target===this)togglePremiumModal(false)" style="display:none;position:fixed;inset:0;z-index:600;background:rgba(0,0,0,0.75);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:20px">
+    <div style="width:100%;max-width:460px;background:#18181B;border:1px solid #27272A;border-radius:20px;padding:36px 32px 28px;position:relative;animation:modal-in 0.3s cubic-bezier(0.22,1,0.36,1) forwards">
 
       <!-- X chiudi -->
       <button onclick="togglePremiumModal(false)" style="position:absolute;top:16px;right:16px;background:none;border:none;cursor:pointer;color:rgba(255,255,255,0.3);line-height:1;transition:color 0.2s" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.3)'">
@@ -2195,15 +2195,42 @@
       </button>
 
       <!-- Titolo -->
-      <h2 style="font-family:'Playfair Display',Georgia,serif;font-size:1.4rem;font-weight:700;color:#FAFAFA;margin-bottom:12px;line-height:1.2">Funzione in arrivo.</h2>
+      <h2 style="font-family:'Playfair Display',Georgia,serif;font-size:1.35rem;font-weight:700;color:#FAFAFA;margin-bottom:6px;line-height:1.2">Sblocca Legacy Premium</h2>
+      <p style="font-family:'Inter',sans-serif;font-size:0.82rem;line-height:1.6;color:#A1A1AA;margin-bottom:24px">Scegli il piano più adatto a te. Cancella quando vuoi.</p>
 
-      <!-- Sottotitolo -->
-      <p style="font-family:'Inter',sans-serif;font-size:0.875rem;line-height:1.65;color:#A1A1AA;margin-bottom:28px">Stiamo perfezionando questa funzionalità. Sarà presto disponibile per gli utenti Premium.</p>
+      <!-- Card PRO -->
+      <div style="border:1px solid #27272A;border-radius:14px;padding:20px;margin-bottom:12px;background:rgba(250,250,250,0.02)">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+          <span style="font-family:'Inter',sans-serif;font-size:0.72rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#A1A1AA">Premium</span>
+          <span style="font-family:'Playfair Display',Georgia,serif;font-size:1.3rem;font-weight:700;color:#FAFAFA">17,99€<span style="font-size:0.75rem;font-weight:400;color:#A1A1AA">/mese</span></span>
+        </div>
+        <div style="font-family:'Inter',sans-serif;font-size:0.78rem;color:#A1A1AA;line-height:1.6;margin-bottom:16px">
+          ✓ Storie illimitate &nbsp;·&nbsp; ✓ Genera libro PDF &nbsp;·&nbsp; ✓ Audiolibro
+        </div>
+        <button onclick="startCheckout('pro')" id="btnCheckoutPro" style="width:100%;padding:11px;border-radius:10px;background:#FAFAFA;border:none;cursor:pointer;font-family:'Inter',sans-serif;font-size:0.85rem;font-weight:600;color:#09090B;transition:background 0.2s" onmouseover="this.style.background='#E4E4E7'" onmouseout="this.style.background='#FAFAFA'">
+          Legacy PRO — 17,99€
+        </button>
+      </div>
 
-      <!-- Bottone -->
-      <button onclick="togglePremiumModal(false)" style="width:100%;padding:12px;border-radius:10px;background:#FAFAFA;border:none;cursor:pointer;font-family:'Inter',sans-serif;font-size:0.875rem;font-weight:600;letter-spacing:0.03em;color:#09090B;transition:background 0.2s" onmouseover="this.style.background='#E4E4E7'" onmouseout="this.style.background='#FAFAFA'">
-        Ok, ho capito
-      </button>
+      <!-- Card ULTRA -->
+      <div style="border:1px solid rgba(250,250,250,0.18);border-radius:14px;padding:20px;margin-bottom:20px;background:rgba(250,250,250,0.03);position:relative">
+        <div style="position:absolute;top:-10px;left:20px;background:#FAFAFA;color:#09090B;font-family:'Inter',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:3px 10px;border-radius:99px">Più completo</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+          <span style="font-family:'Inter',sans-serif;font-size:0.72rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#FAFAFA">Ultra</span>
+          <span style="font-family:'Playfair Display',Georgia,serif;font-size:1.3rem;font-weight:700;color:#FAFAFA">54,99€<span style="font-size:0.75rem;font-weight:400;color:#A1A1AA">/mese</span></span>
+        </div>
+        <div style="font-family:'Inter',sans-serif;font-size:0.78rem;color:#A1A1AA;line-height:1.6;margin-bottom:16px">
+          ✓ Tutto di Premium &nbsp;·&nbsp; ✓ Clonazione voce IA &nbsp;·&nbsp; ✓ Audiolibro HD
+        </div>
+        <button onclick="startCheckout('ultra')" id="btnCheckoutUltra" style="width:100%;padding:11px;border-radius:10px;background:#FAFAFA;border:none;cursor:pointer;font-family:'Inter',sans-serif;font-size:0.85rem;font-weight:600;color:#09090B;transition:background 0.2s" onmouseover="this.style.background='#E4E4E7'" onmouseout="this.style.background='#FAFAFA'">
+          Legacy ULTRA — 54,99€
+        </button>
+      </div>
+
+      <!-- Note -->
+      <p style="font-family:'Inter',sans-serif;font-size:0.72rem;color:rgba(161,161,170,0.5);text-align:center">
+        Pagamento sicuro via Stripe &nbsp;·&nbsp; Cancella quando vuoi &nbsp;·&nbsp; Nessun vincolo
+      </p>
 
     </div>
   </div>
