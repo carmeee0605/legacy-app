@@ -2194,10 +2194,8 @@ window.closeUpsell = function() {
 };
 
 window.choosePlan = function(plan) {
-  // Placeholder — integra Stripe o il tuo payment provider qui
-  alert(`Redirect al checkout per il piano ${plan.toUpperCase()}.
-(Integra il tuo payment provider in questa funzione)`);
   closeUpsell();
+  startCheckout(plan === 'premium' ? 'pro' : 'ultra');
 };
 
 // ════════════════════════════════════════
@@ -2260,12 +2258,14 @@ window.startCheckout = async function(planType) {
   const priceId = STRIPE_PRICES[planType];
   if (!priceId) return;
 
-  // Feedback visivo sul bottone
-  const btn = document.getElementById(planType === 'pro' ? 'btnCheckoutPro' : 'btnCheckoutUltra');
+  const btnPro   = document.getElementById('btnCheckoutPro');
+  const btnUltra = document.getElementById('btnCheckoutUltra');
+  const btn      = planType === 'pro' ? btnPro : btnUltra;
+  const origText = btn ? btn.textContent : '';
   if (btn) { btn.textContent = 'Reindirizzamento…'; btn.disabled = true; }
 
   try {
-    const res = await fetch(`${API_BASE}/api/create-checkout-session`, {
+    const res  = await fetch('https://legacy-backend-wtx4.onrender.com/api/create-checkout-session', {
       method:  'POST',
       headers: { 'Content-Type': 'application/json' },
       body:    JSON.stringify({ priceId, userId: USER_ID || null }),
@@ -2275,8 +2275,16 @@ window.startCheckout = async function(planType) {
     window.location.href = data.url;
   } catch (err) {
     console.error('[Legacy] Stripe checkout error:', err);
-    if (btn) { btn.textContent = planType === 'pro' ? 'Scegli Premium — 17,99€' : 'Scegli Ultra — 54,99€'; btn.disabled = false; }
-    alert('Errore nel pagamento. Riprova tra qualche istante.');
+    if (btn) { btn.textContent = origText; btn.disabled = false; }
+    // Mostra errore preciso per diagnostica
+    const msg = err.message || 'Errore sconosciuto';
+    const feedback = document.createElement('p');
+    feedback.textContent = '⚠ ' + msg;
+    feedback.style.cssText = 'font-family:Inter,sans-serif;font-size:0.75rem;color:rgba(255,45,85,0.85);text-align:center;margin-top:10px';
+    feedback.id = 'checkoutError';
+    document.getElementById('checkoutError')?.remove();
+    btn?.parentNode?.appendChild(feedback);
+    setTimeout(() => document.getElementById('checkoutError')?.remove(), 8000);
   }
 };
 
