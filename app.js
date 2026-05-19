@@ -2254,22 +2254,16 @@ const STRIPE_PRICES = {
   ultra: 'price_1TYNnbIwxLs2wHRthLwFI2Kn',
 };
 
-window.startCheckout = async function(planType) {
-  const priceId = STRIPE_PRICES[planType];
-  if (!priceId) return;
+// ── Stripe Payment Links (no backend richiesto) ───────────────────────────────
+const STRIPE_LINKS = {
+  pro:   'https://buy.stripe.com/test_eVqeVefZMc3geQB9dH8so00',
+  ultra: 'https://buy.stripe.com/test_fZucN6aFs1oCgYJ75z8so01',
+};
 
-  try {
-    const res  = await fetch('https://legacy-backend-wtx4.onrender.com/api/create-checkout-session', {
-      method:  'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body:    JSON.stringify({ priceId, userId: USER_ID || null }),
-    });
-    const data = await res.json();
-    if (!res.ok) throw new Error(data.detail || `HTTP ${res.status}`);
-    window.location.href = data.url;
-  } catch (err) {
-    console.error('[Legacy] Stripe checkout error:', err.message);
-    window.alert('Errore: ' + err.message);
+window.startCheckout = function(planType) {
+  const url = STRIPE_LINKS[planType];
+  if (url && !url.includes('SOSTITUISCI')) {
+    window.location.href = url;
   }
 };
 
