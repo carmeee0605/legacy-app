@@ -2209,7 +2209,38 @@ window.choosePlan = function(plan) {
 sidebarSettings?.addEventListener('click', () => {
   stopCurrentAudio();
   stopAudiobook();
-  showPanel('settings');
+  toggleSettingsModal(true);
+});
+
+// ════════════════════════════════════════
+//  SETTINGS MODAL
+// ════════════════════════════════════════
+
+window.toggleSettingsModal = function(show) {
+  const modal = document.getElementById('settingsModal');
+  if (!modal) return;
+  modal.style.display = show ? 'flex' : 'none';
+  if (show) {
+    toggleSidebar(false);
+    // Sincronizza valori correnti nei select del modal
+    const voiceSel = document.getElementById('settingsVoiceModal');
+    const langSel  = document.getElementById('settingsLangModal');
+    const emailEl  = document.getElementById('settingsEmailModal');
+    if (voiceSel) voiceSel.value = selectedVoice || 'shimmer';
+    if (langSel)  langSel.value  = currentLang  || 'it';
+    if (emailEl && settingsEmail) emailEl.textContent = settingsEmail.textContent || '—';
+  }
+};
+
+window.openCustomerPortal = function() {
+  window.open('https://billing.stripe.com/p/login/test_eVqeVefZMc3geQB9dH8so00', '_blank');
+};
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    toggleSettingsModal(false);
+    togglePremiumModal(false);
+  }
 });
 
 btnSidebarLogout?.addEventListener('click', async () => {
@@ -2243,10 +2274,6 @@ window.togglePremiumModal = function(show) {
   modal.style.display = show ? 'flex' : 'none';
   if (show) toggleSidebar(false);
 };
-
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') togglePremiumModal(false);
-});
 
 // Price ID Stripe per piano
 const STRIPE_PRICES = {
