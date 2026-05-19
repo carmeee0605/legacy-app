@@ -2237,5 +2237,30 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <script src="app.js"></script>
+  <script>
+    if (typeof startCheckout === 'undefined') {
+      window.startCheckout = async function(planType) {
+        const prices = {
+          pro:   'price_1TYNmPIwxLs2wHRt8Au7xEqA',
+          ultra: 'price_1TYNnbIwxLs2wHRthLwFI2Kn',
+        };
+        const priceId = prices[planType];
+        if (!priceId) return;
+        try {
+          const fd = new FormData();
+          fd.append('priceId', priceId);
+          const res  = await fetch('https://legacy-backend-wtx4.onrender.com/api/create-checkout-session', {
+            method: 'POST',
+            body:   fd,
+          });
+          const data = await res.json();
+          if (!res.ok) throw new Error(data.detail || 'HTTP ' + res.status);
+          window.location.href = data.url;
+        } catch (err) {
+          window.alert('Errore: ' + err.message);
+        }
+      };
+    }
+  </script>
 </body>
 </html>
