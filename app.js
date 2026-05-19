@@ -2236,7 +2236,7 @@ logoMobile?.addEventListener('click', goHome);
 logoSidebar?.addEventListener('click', goHome);
 
 // ════════════════════════════════════════
-//  PREMIUM COMING SOON MODAL
+//  PREMIUM MODAL + STRIPE CHECKOUT
 // ════════════════════════════════════════
 
 window.togglePremiumModal = function(show) {
@@ -2249,6 +2249,36 @@ window.togglePremiumModal = function(show) {
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') togglePremiumModal(false);
 });
+
+// Price ID Stripe per piano
+const STRIPE_PRICES = {
+  pro:   'price_1TYNmPIwxLs2wHRt8Au7xEqA',
+  ultra: 'price_1TYNnbIwxLs2wHRthLwFI2Kn',
+};
+
+window.startCheckout = async function(planType) {
+  const priceId = STRIPE_PRICES[planType];
+  if (!priceId) return;
+
+  // Feedback visivo sul bottone
+  const btn = document.getElementById(planType === 'pro' ? 'btnCheckoutPro' : 'btnCheckoutUltra');
+  if (btn) { btn.textContent = 'Reindirizzamento…'; btn.disabled = true; }
+
+  try {
+    const res = await fetch(`${API_BASE}/api/create-checkout-session`, {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify({ priceId, userId: USER_ID || null }),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.detail || `HTTP ${res.status}`);
+    window.location.href = data.url;
+  } catch (err) {
+    console.error('[Legacy] Stripe checkout error:', err);
+    if (btn) { btn.textContent = planType === 'pro' ? 'Scegli Premium — 17,99€' : 'Scegli Ultra — 54,99€'; btn.disabled = false; }
+    alert('Errore nel pagamento. Riprova tra qualche istante.');
+  }
+};
 
 // ════════════════════════════════════════
 //  LANDING / AUTH
