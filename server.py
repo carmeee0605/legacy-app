@@ -27,6 +27,7 @@ import tempfile
 import time
 import uuid
 import requests
+import stripe
 from pathlib import Path
 from typing import Optional
 
@@ -46,6 +47,14 @@ ANTHROPIC_API_KEY  = os.getenv("ANTHROPIC_API_KEY")
 SUPABASE_URL       = os.getenv("SUPABASE_URL")
 SUPABASE_KEY       = os.getenv("SUPABASE_KEY")
 ELEVENLABS_API_KEY = os.getenv("ELEVENLABS_API_KEY")  # opzionale
+STRIPE_SECRET_KEY  = os.getenv("STRIPE_SECRET_KEY")   # opzionale — necessario per pagamenti
+
+# Inizializza Stripe solo se la key è presente
+if STRIPE_SECRET_KEY:
+    stripe.api_key = STRIPE_SECRET_KEY
+    print("[Legacy] Stripe: API key trovata — checkout disponibile")
+else:
+    print("[Legacy] Stripe: API key non trovata — checkout non disponibile")
 
 for name, val in [
     ("OPENAI_API_KEY",    OPENAI_API_KEY),
@@ -1022,6 +1031,35 @@ async def generate_book(
 async def get_history(session_id: str):
     rows = db_load_history_with_images(session_id)
     return {"history": rows}
+
+
+# ════════════════════════════════════════
+#  ENDPOINT: STRIPE CHECKOUT
+# ════════════════════════════════════════
+
+class CheckoutRequest(BaseModel):
+    priceId: str
+    userId: Optional[str] = None
+
+@app.post("/api/create-checkout-session")
+async def create_checkout_session(body: CheckoutRequest):
+    if not STRIPE_SECRET_KEY:
+        raise HTTPException(status_code=503, detail="Stripe non configurato sul server.")
+
+    FRONTEND_URL = "https://legacy-app-tau.vercel.app"
+
+    try:
+        session = stripe.checkout.sessions.create(
+            mode="subscription",
+            line_items=[{"price": body.priceId, "quantity": 1}],
+            success_url=f"{FRONTEND_URL}/?success=true",
+            cancel_url=f"{FRONTEND_URL}/?canceled=true",
+            client_reference_id=body.userId or None,
+            allow_promotion_codes=True,
+        )
+        return {"url": session.url}
+    except stripe.StripeError as e:
+        raise HTTPException(status_code=400, detail=str(e))
 
 
 # ════════════════════════════════════════
