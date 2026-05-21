@@ -60,6 +60,9 @@ let messagesSinceBook  = 0;
 let pendingImageFile = null;
 // Subscription
 let userSubscription = 'free';   // 'free' | 'premium' | 'ultra'
+let isSubscribed     = false;    // true se l'utente ha un piano attivo
+let freeMessageCount = parseInt(sessionStorage.getItem('legacy_msg_count') || '0');
+const FREE_MAX_MESSAGES = 15;    // limite messaggi gratuiti
 const FREE_SESSION_LIMIT = 1;
 let pendingStoryType   = 'personale';   // tipo scelto nella path modal
 let currentStoryType  = 'personale';   // tipo della sessione attualmente aperta
@@ -2092,6 +2095,8 @@ async function loadUserSubscription() {
     if (res.ok) {
       const data = await res.json();
       userSubscription = data.subscription_level || 'free';
+      isSubscribed     = userSubscription !== 'free';
+      updateUIBasedOnSubscription();
     }
   } catch (e) {
     console.warn('[Legacy] subscription fetch fallito — default free:', e.message);
@@ -2216,11 +2221,109 @@ sidebarSettings?.addEventListener('click', () => {
 });
 
 // ════════════════════════════════════════
-//  CUSTOMER PORTAL (Stripe)
+//  SETTINGS — NAVIGAZIONE SOTTO-VISTE
 // ════════════════════════════════════════
+
+window.showSubscriptionSubView = function() {
+  const main    = document.getElementById('settings-main-view');
+  const billing = document.getElementById('settings-billing-view');
+  const unsub   = document.getElementById('billing-status-unsubscribed');
+  const sub     = document.getElementById('billing-status-subscribed');
+  if (!main || !billing) return;
+
+  main.classList.add('hidden');
+  billing.classList.remove('hidden');
+
+  // Mostra il blocco giusto in base allo stato abbonamento
+  if (isSubscribed) {
+    unsub?.classList.add('hidden');
+    sub?.classList.remove('hidden');
+  } else {
+    unsub?.classList.remove('hidden');
+    sub?.classList.add('hidden');
+  }
+
+  // Scrolla in cima al panel
+  document.getElementById('panelSettings')?.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
+window.hideSubscriptionSubView = function() {
+  const main    = document.getElementById('settings-main-view');
+  const billing = document.getElementById('settings-billing-view');
+  if (!main || !billing) return;
+  billing.classList.add('hidden');
+  main.classList.remove('hidden');
+  document.getElementById('panelSettings')?.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
+// Reset alla vista principale quando si apre il panel impostazioni
+const _origShowPanel = showPanel;
+// Patch showPanel per resettare la billing view quando si entra in settings
+(function() {
+  const _orig = showPanel;
+  showPanel = function(name) {
+    if (name === 'settings') {
+      // Resetta sempre alla vista principale
+      const main    = document.getElementById('settings-main-view');
+      const billing = document.getElementById('settings-billing-view');
+      if (main)    main.classList.remove('hidden');
+      if (billing) billing.classList.add('hidden');
+    }
+    _orig(name);
+  };
+})();
+
+// ── Stripe Payment Links ───────────────────────────────────────────────────────
+const STRIPE_LINKS = {
+  pro:   'https://buy.stripe.com/test_eVqeVefZMc3geQB9dH8so00',
+  ultra: 'https://buy.stripe.com/test_fZucN6aFs1oCgYJ75z8so01',
+};
+
+window.startCheckout = function(planType) {
+  const url = STRIPE_LINKS[planType];
+  if (url) window.location.href = url;
+};
 
 window.openCustomerPortal = function() {
   window.open('https://billing.stripe.com/p/login/test_eVqeVefZMc3geQB9dH8so00', '_blank');
+};
+
+// ════════════════════════════════════════
+//  UPSELL & SUBSCRIPTION UI
+// ════════════════════════════════════════
+
+window.triggerUpsellModal = function() {
+  showPanel('settings');
+  setTimeout(() => showSubscriptionSubView(), 80);
+};
+
+// ════════════════════════════════════════
+//  FREE MESSAGE LIMIT BANNER
+// ════════════════════════════════════════
+
+function showFreeLimitBanner() {
+  const banner = document.getElementById('free-limit-banner');
+  if (banner) banner.classList.remove('hidden');
+  if (textInput)   { textInput.disabled   = true; textInput.style.opacity   = '0.4'; }
+  if (btnSendText) { btnSendText.disabled = true; btnSendText.style.opacity = '0.4'; }
+  if (btnMic)      { btnMic.disabled      = true; btnMic.style.opacity      = '0.4'; }
+  if (btnAttach)   { btnAttach.disabled   = true; btnAttach.style.opacity   = '0.4'; }
+}
+
+window.updateUIBasedOnSubscription = function() {
+  const upsellBtn = document.getElementById('upsell-badge-btn');
+  const banner    = document.getElementById('free-limit-banner');
+
+  if (isSubscribed) {
+    upsellBtn?.classList.add('hidden');
+    banner?.classList.add('hidden');
+    if (textInput)   { textInput.disabled   = false; textInput.style.opacity   = '1'; }
+    if (btnSendText) { btnSendText.disabled = false; btnSendText.style.opacity = '1'; }
+    if (btnMic)      { btnMic.disabled      = false; btnMic.style.opacity      = '1'; }
+    if (btnAttach)   { btnAttach.disabled   = false; btnAttach.style.opacity   = '1'; }
+  } else {
+    upsellBtn?.classList.remove('hidden');
+  }
 };
 
 document.addEventListener('keydown', e => {
@@ -2231,6 +2334,7 @@ btnSidebarLogout?.addEventListener('click', async () => {
   if (!confirm('Vuoi uscire?')) return;
   stopCurrentAudio();
   sessionStorage.clear();
+  freeMessageCount = 0;
   localStorage.removeItem(LS_LAST_SESSION);
   await sbClient.auth.signOut();
   window.location.reload();
@@ -2257,25 +2361,6 @@ window.togglePremiumModal = function(show) {
   if (!modal) return;
   modal.style.display = show ? 'flex' : 'none';
   if (show) toggleSidebar(false);
-};
-
-// Price ID Stripe per piano
-const STRIPE_PRICES = {
-  pro:   'price_1TYNmPIwxLs2wHRt8Au7xEqA',
-  ultra: 'price_1TYNnbIwxLs2wHRthLwFI2Kn',
-};
-
-// ── Stripe Payment Links (no backend richiesto) ───────────────────────────────
-const STRIPE_LINKS = {
-  pro:   'https://buy.stripe.com/test_eVqeVefZMc3geQB9dH8so00',
-  ultra: 'https://buy.stripe.com/test_fZucN6aFs1oCgYJ75z8so01',
-};
-
-window.startCheckout = function(planType) {
-  const url = STRIPE_LINKS[planType];
-  if (url && !url.includes('SOSTITUISCI')) {
-    window.location.href = url;
-  }
 };
 
 // ════════════════════════════════════════
@@ -2507,6 +2592,17 @@ async function onRecordingStop() {
 // ════════════════════════════════════════
 
 async function sendAudioToServer(blob, mimeType) {
+  // ── Paywall messaggi free ─────────────────────────────────────────────────
+  if (!isSubscribed) {
+    freeMessageCount++;
+    sessionStorage.setItem('legacy_msg_count', freeMessageCount);
+    console.log(`[Legacy] msg ${freeMessageCount}/${FREE_MAX_MESSAGES} — isSubscribed: ${isSubscribed}`);
+    if (freeMessageCount > FREE_MAX_MESSAGES) {
+      showFreeLimitBanner();
+      return;
+    }
+  }
+
   const ext = mimeType.split('/')[1]?.split(';')[0] || 'webm';
   const fd  = buildFormData();
   fd.append('audio', blob, `recording.${ext}`);
@@ -2558,6 +2654,18 @@ textInput?.addEventListener('keydown', e => { if (e.key === 'Enter') sendTextMes
 function sendTextMessage() {
   const text = textInput?.value.trim();
   if (!text && !pendingImageFile) return;
+
+  // ── Paywall messaggi free ─────────────────────────────────────────────────
+  if (!isSubscribed) {
+    freeMessageCount++;
+    sessionStorage.setItem('legacy_msg_count', freeMessageCount);
+    console.log(`[Legacy] msg ${freeMessageCount}/${FREE_MAX_MESSAGES} — isSubscribed: ${isSubscribed}`);
+    if (freeMessageCount > FREE_MAX_MESSAGES) {
+      showFreeLimitBanner();
+      return;
+    }
+  }
+
   stopCurrentAudio();
   if (textInput) textInput.value = '';
   sendTextToServer(text || '');
