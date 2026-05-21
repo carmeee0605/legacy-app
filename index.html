@@ -2328,7 +2328,7 @@
           ultra: 'https://buy.stripe.com/test_fZucN6aFs1oCgYJ75z8so01',
         };
         const url = links[planType];
-        if (url && !url.includes('SOSTITUISCI')) window.location.href = url;
+        if (url) window.location.href = url;
       };
     }
     if (typeof togglePremiumModal === 'undefined') {
@@ -2336,6 +2336,39 @@
         const modal = document.getElementById('premiumModal');
         if (!modal) return;
         modal.style.display = show ? 'flex' : 'none';
+      };
+    }
+    if (typeof showSubscriptionSubView === 'undefined') {
+      window.showSubscriptionSubView = function() {
+        const main    = document.getElementById('settings-main-view');
+        const billing = document.getElementById('settings-billing-view');
+        const unsub   = document.getElementById('billing-status-unsubscribed');
+        const sub     = document.getElementById('billing-status-subscribed');
+        if (main)    main.classList.add('hidden');
+        if (billing) billing.classList.remove('hidden');
+        const subscribed = (typeof isSubscribed !== 'undefined') ? isSubscribed : false;
+        if (subscribed) {
+          unsub?.classList.add('hidden');
+          sub?.classList.remove('hidden');
+        } else {
+          unsub?.classList.remove('hidden');
+          sub?.classList.add('hidden');
+        }
+        document.getElementById('panelSettings')?.scrollTo({ top: 0, behavior: 'smooth' });
+      };
+    }
+    if (typeof hideSubscriptionSubView === 'undefined') {
+      window.hideSubscriptionSubView = function() {
+        const main    = document.getElementById('settings-main-view');
+        const billing = document.getElementById('settings-billing-view');
+        if (billing) billing.classList.add('hidden');
+        if (main)    main.classList.remove('hidden');
+        document.getElementById('panelSettings')?.scrollTo({ top: 0, behavior: 'smooth' });
+      };
+    }
+    if (typeof openCustomerPortal === 'undefined') {
+      window.openCustomerPortal = function() {
+        window.open('https://billing.stripe.com/p/login/test_eVqeVefZMc3geQB9dH8so00', '_blank');
       };
     }
   </script>
