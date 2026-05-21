@@ -2663,6 +2663,10 @@ function sendTextMessage() {
     freeMessageCount++;
     sessionStorage.setItem('legacy_msg_count', freeMessageCount);
   }
+
+  stopCurrentAudio();
+  if (textInput) textInput.value = '';
+  sendTextToServer(text || '');
 }
 
 async function sendTextToServer(text) {
