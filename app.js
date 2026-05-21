@@ -62,7 +62,7 @@ let pendingImageFile = null;
 let userSubscription = 'free';   // 'free' | 'premium' | 'ultra'
 let isSubscribed     = false;    // true se l'utente ha un piano attivo
 let freeMessageCount = parseInt(sessionStorage.getItem('legacy_msg_count') || '0');
-const FREE_MAX_MESSAGES = 3;     // limite messaggi gratuiti (abbassato a 3 per test)
+const FREE_MAX_MESSAGES = 15;    // limite messaggi gratuiti
 const FREE_SESSION_LIMIT = 1;
 let pendingStoryType   = 'personale';   // tipo scelto nella path modal
 let currentStoryType  = 'personale';   // tipo della sessione attualmente aperta
@@ -2594,13 +2594,12 @@ async function onRecordingStop() {
 async function sendAudioToServer(blob, mimeType) {
   // ── Paywall messaggi free ─────────────────────────────────────────────────
   if (!isSubscribed) {
-    freeMessageCount++;
-    sessionStorage.setItem('legacy_msg_count', freeMessageCount);
-    console.log(`[Legacy] msg ${freeMessageCount}/${FREE_MAX_MESSAGES} — isSubscribed: ${isSubscribed}`);
-    if (freeMessageCount > FREE_MAX_MESSAGES) {
+    if (freeMessageCount >= FREE_MAX_MESSAGES) {
       showFreeLimitBanner();
       return;
     }
+    freeMessageCount++;
+    sessionStorage.setItem('legacy_msg_count', freeMessageCount);
   }
 
   const ext = mimeType.split('/')[1]?.split(';')[0] || 'webm';
@@ -2657,18 +2656,13 @@ function sendTextMessage() {
 
   // ── Paywall messaggi free ─────────────────────────────────────────────────
   if (!isSubscribed) {
-    freeMessageCount++;
-    sessionStorage.setItem('legacy_msg_count', freeMessageCount);
-    console.log(`[Legacy] msg ${freeMessageCount}/${FREE_MAX_MESSAGES} — isSubscribed: ${isSubscribed}`);
-    if (freeMessageCount > FREE_MAX_MESSAGES) {
+    if (freeMessageCount >= FREE_MAX_MESSAGES) {
       showFreeLimitBanner();
       return;
     }
+    freeMessageCount++;
+    sessionStorage.setItem('legacy_msg_count', freeMessageCount);
   }
-
-  stopCurrentAudio();
-  if (textInput) textInput.value = '';
-  sendTextToServer(text || '');
 }
 
 async function sendTextToServer(text) {
