@@ -1848,6 +1848,11 @@
             <span style="font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.12em;padding:2px 6px;border-radius:4px;background:rgba(250,250,250,0.06);border:1px solid rgba(250,250,250,0.12);color:rgba(250,250,250,0.4)">PRO</span>
           </div>
 
+          <!-- Upsell Premium badge — visibile solo utenti free -->
+          <button id="upsell-badge-btn" onclick="triggerUpsellModal()" class="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl mb-1 font-mono text-[11px] tracking-[0.08em] uppercase transition-all duration-200" style="background:rgba(250,250,250,0.04);border:1px solid rgba(250,250,250,0.15);color:rgba(250,250,250,0.75)" onmouseover="this.style.background='rgba(250,250,250,0.08)';this.style.borderColor='rgba(250,250,250,0.3)'" onmouseout="this.style.background='rgba(250,250,250,0.04)';this.style.borderColor='rgba(250,250,250,0.15)'">
+            ✨ Sblocca Premium
+          </button>
+
           <div id="sidebarSettings" class="sidebar-item" onclick="showPanel('settings')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg><span data-i18n="sidebar_settings">Impostazioni</span></div>
           <div id="btnSidebarLogout" class="sidebar-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,45,85,0.7)" stroke-width="2" stroke-linecap="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg><span style="color:rgba(255,45,85,0.7)" data-i18n="sidebar_logout">Esci</span></div>
       </aside>
@@ -2331,6 +2336,14 @@
         if (url) window.location.href = url;
       };
     }
+    if (typeof triggerUpsellModal === 'undefined') {
+      window.triggerUpsellModal = function() {
+        if (typeof showPanel === 'function') showPanel('settings');
+        setTimeout(function() {
+          if (typeof showSubscriptionSubView === 'function') showSubscriptionSubView();
+        }, 50);
+      };
+    }
     if (typeof togglePremiumModal === 'undefined') {
       window.togglePremiumModal = function(show) {
         const modal = document.getElementById('premiumModal');
@@ -2339,7 +2352,6 @@
       };
     }
     if (typeof showSubscriptionSubView === 'undefined') {
-      window.showSubscriptionSubView = function() {
         const main    = document.getElementById('settings-main-view');
         const billing = document.getElementById('settings-billing-view');
         const unsub   = document.getElementById('billing-status-unsubscribed');
