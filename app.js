@@ -63,6 +63,11 @@ let userSubscription = 'free';   // 'free' | 'premium' | 'ultra'
 let isSubscribed     = false;    // true se l'utente ha un piano attivo
 let freeMessageCount = parseInt(sessionStorage.getItem('legacy_msg_count') || '0');
 const FREE_MAX_MESSAGES = 15;    // limite messaggi gratuiti
+
+// Limite giornaliero PRO
+const PRO_MAX_MESSAGES = 40;
+let proMessageCount  = parseInt(localStorage.getItem('legacy_pro_msg_count') || '0');
+let lastMessageDate  = localStorage.getItem('legacy_last_msg_date') || new Date().toDateString();
 const FREE_SESSION_LIMIT = 1;
 let pendingStoryType   = 'personale';   // tipo scelto nella path modal
 let currentStoryType  = 'personale';   // tipo della sessione attualmente aperta
@@ -2310,19 +2315,59 @@ function showFreeLimitBanner() {
   if (btnAttach)   { btnAttach.disabled   = true; btnAttach.style.opacity   = '0.4'; }
 }
 
+function showProLimitBanner(show) {
+  const banner = document.getElementById('pro-limit-banner');
+  if (banner) banner.classList.toggle('hidden', !show);
+  const blocked = show;
+  if (textInput)   { textInput.disabled   = blocked; textInput.style.opacity   = blocked ? '0.4' : '1'; }
+  if (btnSendText) { btnSendText.disabled = blocked; btnSendText.style.opacity = blocked ? '0.4' : '1'; }
+  if (btnMic)      { btnMic.disabled      = blocked; btnMic.style.opacity      = blocked ? '0.4' : '1'; }
+  if (btnAttach)   { btnAttach.disabled   = blocked; btnAttach.style.opacity   = blocked ? '0.4' : '1'; }
+}
+
+// Reset automatico contatore PRO a mezzanotte (verifica ad ogni apertura pagina)
+(function checkProDailyReset() {
+  if (!isSubscribed) return;
+  const today = new Date().toDateString();
+  if (today !== lastMessageDate) {
+    proMessageCount = 0;
+    lastMessageDate = today;
+    localStorage.setItem('legacy_pro_msg_count', '0');
+    localStorage.setItem('legacy_last_msg_date', today);
+    showProLimitBanner(false);
+  } else if (proMessageCount >= PRO_MAX_MESSAGES) {
+    // Limite già raggiunto oggi
+    showProLimitBanner(true);
+  }
+})();
+
 window.updateUIBasedOnSubscription = function() {
-  const upsellBtn = document.getElementById('upsell-badge-btn');
-  const banner    = document.getElementById('free-limit-banner');
+  const upsellBtn  = document.getElementById('upsell-badge-btn');
+  const bannerFree = document.getElementById('free-limit-banner');
+  const bannerPro  = document.getElementById('pro-limit-banner');
 
   if (isSubscribed) {
+    // Nasconde upsell e banner free
     upsellBtn?.classList.add('hidden');
-    banner?.classList.add('hidden');
+    bannerFree?.classList.add('hidden');
+    // Riabilita input (il banner PRO verrà gestito da checkProDailyReset)
     if (textInput)   { textInput.disabled   = false; textInput.style.opacity   = '1'; }
     if (btnSendText) { btnSendText.disabled = false; btnSendText.style.opacity = '1'; }
     if (btnMic)      { btnMic.disabled      = false; btnMic.style.opacity      = '1'; }
     if (btnAttach)   { btnAttach.disabled   = false; btnAttach.style.opacity   = '1'; }
+    // Controlla reset giornaliero
+    const today = new Date().toDateString();
+    if (today !== lastMessageDate) {
+      proMessageCount = 0;
+      lastMessageDate = today;
+      localStorage.setItem('legacy_pro_msg_count', '0');
+      localStorage.setItem('legacy_last_msg_date', today);
+    } else if (proMessageCount >= PRO_MAX_MESSAGES) {
+      showProLimitBanner(true);
+    }
   } else {
     upsellBtn?.classList.remove('hidden');
+    bannerPro?.classList.add('hidden');
   }
 };
 
@@ -2592,7 +2637,7 @@ async function onRecordingStop() {
 // ════════════════════════════════════════
 
 async function sendAudioToServer(blob, mimeType) {
-  // ── Paywall messaggi free ─────────────────────────────────────────────────
+  // ── Paywall utenti FREE ───────────────────────────────────────────────────
   if (!isSubscribed) {
     if (freeMessageCount >= FREE_MAX_MESSAGES) {
       showFreeLimitBanner();
@@ -2600,6 +2645,25 @@ async function sendAudioToServer(blob, mimeType) {
     }
     freeMessageCount++;
     sessionStorage.setItem('legacy_msg_count', freeMessageCount);
+  }
+
+  // ── Fair Use giornaliero utenti PRO ───────────────────────────────────────
+  if (isSubscribed) {
+    const today = new Date().toDateString();
+    if (today !== lastMessageDate) {
+      proMessageCount = 0;
+      lastMessageDate = today;
+      localStorage.setItem('legacy_pro_msg_count', '0');
+      localStorage.setItem('legacy_last_msg_date', today);
+      showProLimitBanner(false);
+    }
+    if (proMessageCount >= PRO_MAX_MESSAGES) {
+      showProLimitBanner(true);
+      return;
+    }
+    proMessageCount++;
+    localStorage.setItem('legacy_pro_msg_count', String(proMessageCount));
+    localStorage.setItem('legacy_last_msg_date', new Date().toDateString());
   }
 
   const ext = mimeType.split('/')[1]?.split(';')[0] || 'webm';
@@ -2654,7 +2718,7 @@ function sendTextMessage() {
   const text = textInput?.value.trim();
   if (!text && !pendingImageFile) return;
 
-  // ── Paywall messaggi free ─────────────────────────────────────────────────
+  // ── Paywall utenti FREE ───────────────────────────────────────────────────
   if (!isSubscribed) {
     if (freeMessageCount >= FREE_MAX_MESSAGES) {
       showFreeLimitBanner();
@@ -2662,6 +2726,27 @@ function sendTextMessage() {
     }
     freeMessageCount++;
     sessionStorage.setItem('legacy_msg_count', freeMessageCount);
+  }
+
+  // ── Fair Use giornaliero utenti PRO ───────────────────────────────────────
+  if (isSubscribed) {
+    const today = new Date().toDateString();
+    if (today !== lastMessageDate) {
+      // Nuovo giorno: azzera contatore
+      proMessageCount = 0;
+      lastMessageDate = today;
+      localStorage.setItem('legacy_pro_msg_count', '0');
+      localStorage.setItem('legacy_last_msg_date', today);
+      // Riabilita input se era bloccato
+      showProLimitBanner(false);
+    }
+    if (proMessageCount >= PRO_MAX_MESSAGES) {
+      showProLimitBanner(true);
+      return;
+    }
+    proMessageCount++;
+    localStorage.setItem('legacy_pro_msg_count', String(proMessageCount));
+    localStorage.setItem('legacy_last_msg_date', new Date().toDateString());
   }
 
   stopCurrentAudio();
