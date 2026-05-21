@@ -2325,9 +2325,9 @@ function showProLimitBanner(show) {
   if (btnAttach)   { btnAttach.disabled   = blocked; btnAttach.style.opacity   = blocked ? '0.4' : '1'; }
 }
 
-// Reset automatico contatore PRO a mezzanotte (verifica ad ogni apertura pagina)
-(function checkProDailyReset() {
-  if (!isSubscribed) return;
+// Reset automatico contatore PRO — chiamato da updateUIBasedOnSubscription
+// dopo che isSubscribed è stato caricato dal backend
+function checkProDailyReset() {
   const today = new Date().toDateString();
   if (today !== lastMessageDate) {
     proMessageCount = 0;
@@ -2336,10 +2336,9 @@ function showProLimitBanner(show) {
     localStorage.setItem('legacy_last_msg_date', today);
     showProLimitBanner(false);
   } else if (proMessageCount >= PRO_MAX_MESSAGES) {
-    // Limite già raggiunto oggi
     showProLimitBanner(true);
   }
-})();
+}
 
 window.updateUIBasedOnSubscription = function() {
   const upsellBtn  = document.getElementById('upsell-badge-btn');
@@ -2347,24 +2346,14 @@ window.updateUIBasedOnSubscription = function() {
   const bannerPro  = document.getElementById('pro-limit-banner');
 
   if (isSubscribed) {
-    // Nasconde upsell e banner free
     upsellBtn?.classList.add('hidden');
     bannerFree?.classList.add('hidden');
-    // Riabilita input (il banner PRO verrà gestito da checkProDailyReset)
     if (textInput)   { textInput.disabled   = false; textInput.style.opacity   = '1'; }
     if (btnSendText) { btnSendText.disabled = false; btnSendText.style.opacity = '1'; }
     if (btnMic)      { btnMic.disabled      = false; btnMic.style.opacity      = '1'; }
     if (btnAttach)   { btnAttach.disabled   = false; btnAttach.style.opacity   = '1'; }
-    // Controlla reset giornaliero
-    const today = new Date().toDateString();
-    if (today !== lastMessageDate) {
-      proMessageCount = 0;
-      lastMessageDate = today;
-      localStorage.setItem('legacy_pro_msg_count', '0');
-      localStorage.setItem('legacy_last_msg_date', today);
-    } else if (proMessageCount >= PRO_MAX_MESSAGES) {
-      showProLimitBanner(true);
-    }
+    // Controlla reset giornaliero — isSubscribed è già noto qui
+    checkProDailyReset();
   } else {
     upsellBtn?.classList.remove('hidden');
     bannerPro?.classList.add('hidden');
